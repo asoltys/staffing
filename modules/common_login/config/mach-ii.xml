@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+	<listeners>
+
+		<listener name="commonUserListener" type="common_login.modules.common_login.listeners.CommonUserListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="loginListener" type="common_login.modules.common_login.listeners.LoginListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+	</listeners>
+
+	<!-- EVENT-HANDLERS -->
+	<event-handlers>
+		<event-handler event="login.process" access="public">
+			<notify listener="LoginListener" method="process" />
+			<view-page name="ajax_response" copyEventArgs="true" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="login.form" access="public">
+			<view-page name="login.form" contentkey="request.content" />
+		</event-handler>
+
+		<event-handler event="logout" access="public">
+			<notify listener="LoginListener" method="logout" />
+		</event-handler>
+
+		<event-handler event="users.list" access="public">
+			<filter name="Authenticate" />
+			<notify listener="CommonUserListener" method="prepareList" />
+			<view-page name="users.list" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="users.form" access="public">
+			<filter name="Authenticate" />
+			<notify listener="CommonUserListener" method="prepareForm" />
+			<view-page name="users.form" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="users.process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="CommonUserListener" method="processForm" />
+		</event-handler>
+
+		<event-handler event="users.add" access="public">
+			<filter name="Authenticate" />
+			<notify listener="CommonUserListener" method="processAdd" />
+		</event-handler>
+
+		<event-handler event="users.delete" access="public">
+			<filter name="Authenticate" />
+			<notify listener="CommonUserListener" method="processDelete" />
+		</event-handler>
+	</event-handlers>
+
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<page-view name="ajax_response" page="/modules/common_login/views/ajax_response.cfm"/>
+
+		<page-view name="users.list" page="/modules/common_login/views/users/list.cfm"/>
+		<page-view name="users.form" page="/modules/common_login/views/users/form.cfm"/>
+
+		<page-view name="login.form" page="/modules/common_login/views/login.cfm" />
+	</page-views>
+</mach-ii>

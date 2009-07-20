@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+	<!-- EVENT-HANDLERS -->
+	<event-handlers>
+		<event-handler event="positions.details" access="public">
+			<view-page name="positions.details" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="positions.list" access="public">
+			<filter name="Authenticate" />
+			<notify listener="positionListener" method="prepareList" />
+			<view-page name="positions.list" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="positions.form" access="public">
+			<filter name="Authenticate" />
+			<notify listener="positionListener" method="prepareForm" />
+			<view-page name="positions.form" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="positions.process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="positionListener" method="processForm" />
+		</event-handler>
+		
+		<event-handler event="positions.delete" access="public">
+			<filter name="Authenticate" />
+			<notify listener="positionListener" method="deletePosition" />
+		</event-handler>
+		
+		<event-handler event="positions.created" access="public">
+			<view-page name="positions.created" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="positions.staffing_log" access="public">
+			<notify listener="positionListener" method="prepareStaffingLog" />
+			<view-page name="positions.staffing_log" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="positions.staffing_log_fast" access="public">
+			<view-page name="positions.staffing_log_fast" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="positions.set_process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="positionListener" method="prepareSetProcessForm" />
+			<view-page name="positions.set_process" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="positions.create_process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="positionListener" method="createProcess" />
+		</event-handler>
+		
+		<event-handler event="positions.update_process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="positionListener" method="updateProcess" />
+		</event-handler>
+		
+		<event-handler event="positions.set_process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="positionListener" method="prepareSetProcessForm" />
+			<view-page name="positions.set_process" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="positions.staffing_archive" access="public">
+			<event-arg name="archived" value="true" />
+			<notify listener="positionListener" method="prepareStaffingArchive" />
+			<view-page name="positions.staffing_log" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="positions.assignees.add" access="public">
+			<notify listener="positionListener" method="addAssignees" />
+		</event-handler>
+		
+		<event-handler event="positions.processAssignments" access="public">
+			<notify listener="positionListener" method="processAssignments" />
+		</event-handler>
+		
+		<event-handler event="positions.get_classification_levels" access="public">
+			<notify listener="positionListener" method="getClassificationLevels" />
+			<announce event="ajax" copyEventArgs="true" />
+		</event-handler>
+	</event-handlers>
+	
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<page-view name="positions.created" page="/views/positions/created.cfm"/>
+		<page-view name="positions.form" page="/views/positions/form.cfm"/>
+		<page-view name="positions.list" page="/views/positions/list.cfm"/>
+		<page-view name="positions.staffing_log" page="/views/positions/staffing_log.cfm"/>
+		<page-view name="positions.staffing_log_fast" page="/views/positions/staffing_log_fast.cfm"/>
+		<page-view name="positions.staffing_archive" page="/views/positions/archive.cfm"/>
+		<page-view name="positions.set_process" page="/views/positions/set_process.cfm"/>
+		<page-view name="positions.details" page="/views/positions/details.cfm"/>
+	</page-views>
+	
+</mach-ii>

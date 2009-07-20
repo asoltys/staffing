@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+<!-- EVENT-HANDLERS -->
+	<event-handlers>
+	
+		<event-handler event="jobs.list" access="public">
+			<notify listener="jobListener" method="prepareList" />
+			<view-page name="jobs.list" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="jobs.form" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="prepareForm" />
+			<view-page name="jobs.form" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="jobs.process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="processForm" />
+		</event-handler>
+		
+		<event-handler event="jobs.delete" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="processDelete" />
+		</event-handler>		
+		
+		<event-handler event="jobs.get_classifications" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="getClassifications" />
+			<announce event="ajax" copyEventArgs="true" />
+		</event-handler>	
+		
+		<event-handler event="jobs.get_classification_levels" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="getClassificationLevels" />
+			<announce event="ajax" copyEventArgs="true" />
+		</event-handler>	
+		
+		<event-handler event="jobs.get_branches" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="getBranches" />
+			<announce event="ajax" copyEventArgs="true" />
+		</event-handler>	
+		
+		<event-handler event="jobs.get_locations" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="getLocations" />
+			<announce event="ajax" copyEventArgs="true" />
+		</event-handler>
+		
+		<event-handler event="jobs.get_job_id" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="getJobId" />
+			<announce event="ajax" copyEventArgs="true" />
+		</event-handler>
+	</event-handlers>
+		
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<page-view name="jobs.list" page="/views/jobs/list.cfm"/>
+		<page-view name="jobs.form" page="/views/jobs/form.cfm"/>
+	</page-views>
+
+</mach-ii>

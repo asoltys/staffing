@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+	<!-- EVENT-HANDLERS -->
+	<event-handlers>
+		<event-handler event="processes.form" access="public">
+			<filter name="Authenticate" />
+			<notify listener="processListener" method="prepareForm" />
+			<view-page name="processes.form" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="processes.process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="processListener" method="processForm" />
+		</event-handler>
+		
+		<event-handler event="processes.list" access="public">
+			<filter name="Authenticate" />
+			<notify listener="processListener" method="prepareList" />
+			<view-page name="processes.list" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="processes.collective_processes" access="public">
+			<notify listener="processListener" method="prepareList" />
+			<view-page name="processes.collective_processes" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="processes.delete" access="public">
+			<filter name="Authenticate" />
+			<notify listener="processListener" method="deleteProcess" />
+		</event-handler>
+		
+		<event-handler event="processes.ssda" access="public">
+			<notify listener="processListener" method="prepareSSDA" />
+			<view-page name="processes.ssda" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="processes.updateSSDA" access="public">
+			<notify listener="processListener" method="updateSSDA" />
+			<view-page name="processes.ssda" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="processes.add_comment" access="public">
+			<filter name="Authenticate" />
+			<notify listener="processListener" method="addComment" />
+		</event-handler>
+		
+		<event-handler event="processes.remove_comment" access="public">
+			<filter name="Authenticate" />
+			<notify listener="processListener" method="removeComment" />
+		</event-handler>
+		
+		<event-handler event="process.add_activity" access="public">
+			<filter name="Authenticate" />
+			<notify listener="processListener" method="addActivity" />
+			<announce event="ajax" copyEventArgs="true" />
+		</event-handler>
+		
+		<event-handler event="process.delete_activity" access="public">
+			<filter name="Authenticate" />
+			<notify listener="processListener" method="deleteActivity" />
+			<announce event="ajax" copyEventArgs="true" />
+		</event-handler>
+	</event-handlers>
+	
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<page-view name="processes.form" page="/views/processes/form.cfm"/>
+		<page-view name="processes.list" page="/views/processes/list.cfm"/>
+		<page-view name="processes.collective_processes" page="/views/processes/collective_processes.cfm"/>
+		<page-view name="processes.ssda" page="/views/ssdas/ssda.cfm"/>
+	</page-views>
+	
+</mach-ii>

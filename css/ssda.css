@@ -1,0 +1,31 @@
+
+div.content form#editSSDA{
+	-moz-border-radius-bottomleft:0;
+	-moz-border-radius-bottomright:0;
+	-moz-border-radius-topleft:0;
+	-moz-border-radius-topright:0;
+	background:none;
+	border:none;
+	margin:0 0 20px 0;
+	padding:0;
+	width:100%;
+}
+div.content form#editSSDA select.status{
+	width:120px;
+	margin-bottom:0;
+}
+div.content form#editSSDA input.date{
+	width:95px;
+	margin-bottom:0;
+}
+div.content form#editSSDA input.endangeredTime{
+	width:30px;
+	margin-bottom:0;
+}
+div.content form#editSSDA table{
+	margin-bottom:0;
+}
+div.content form#editSSDA input.submitButton{
+	margin-left:10px;
+	width:200px;
+}

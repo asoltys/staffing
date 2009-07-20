@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    
+    Copyright (c) 2002-2005	David Ross,	Chris Scott
+    
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    
+    
+    $Id: services.xml,v 1.7 2006/06/02 16:43:58 rossd Exp $
+    
+-->
+
+<beans default-autowire="byName">
+	<bean id="FormControls" class="SuperModel.FormControls" />
+	
+	<bean id="branchService" class="hr_staffing.modules.common_login.services.BranchService">
+		<constructor-arg name="object">
+			<bean id="branchObject" class="hr_staffing.modules.common_login.model.Branch">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="branchGateway" class="hr_staffing.modules.common_login.model.BranchGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="classificationService" class="hr_staffing.services.ClassificationService">
+		<constructor-arg name="object">
+			<bean id="classificationObject" class="hr_staffing.model.classifications.Classification">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="classificationGateway" class="hr_staffing.model.classifications.ClassificationGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="classificationLevelService" class="hr_staffing.services.ClassificationLevelService">
+		<constructor-arg name="object">
+			<bean id="classificationLevelObject" class="hr_staffing.model.classification_levels.ClassificationLevel">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="classificationLevelGateway" class="hr_staffing.model.classification_levels.ClassificationLevelGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="jobService" class="hr_staffing.services.JobService">
+		<constructor-arg name="object">
+			<bean id="jobObject" class="hr_staffing.model.jobs.Job">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="jobGateway" class="hr_staffing.model.jobs.JobGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="languageConsiderationService" class="hr_staffing.services.LanguageConsiderationService">
+		<constructor-arg name="object">
+			<bean id="locationObject" class="hr_staffing.model.language_considerations.LanguageConsideration">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="locationGateway" class="hr_staffing.model.language_considerations.LanguageConsiderationGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="locationService" class="hr_staffing.modules.common_login.services.LocationService">
+		<constructor-arg name="object">
+			<bean id="locationObject" class="hr_staffing.modules.common_login.model.Location">
+				<constructor-arg name="dsn">
+					<value>common_login</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="locationGateway" class="hr_staffing.modules.common_login.model.LocationGateway">
+				<constructor-arg name="dsn">
+					<value>common_login</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="loginService" class="hr_staffing.modules.common_login.services.LoginService" />
+	
+	<bean id="positionService" class="hr_staffing.services.PositionService">
+		<constructor-arg name="object">
+			<bean id="positionObject" class="hr_staffing.model.positions.Position">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="positionGateway" class="hr_staffing.model.positions.PositionGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="phaseService" class="hr_staffing.services.PhaseService">
+		<constructor-arg name="object">
+			<bean id="phaseObject" class="hr_staffing.model.phases.Phase">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="phaseMethodGateway" class="hr_staffing.model.phases.PhaseGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="poolService" class="hr_staffing.services.poolService">
+		<constructor-arg name="object">
+			<bean id="poolObject" class="hr_staffing.model.pools.pool">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="poolGateway" class="hr_staffing.model.pools.poolGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="processService" class="hr_staffing.services.ProcessService">
+		<constructor-arg name="object">
+			<bean id="processObject" class="hr_staffing.model.processes.Process">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="processGateway" class="hr_staffing.model.processes.ProcessGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="transactionLog">
+			<ref bean="transactionLog" />
+		</constructor-arg>
+	</bean>
+	
+		
+	<bean id="roleService" class="hr_staffing.modules.common_login.services.RoleService">
+		<constructor-arg name="object">
+			<bean id="roleObject" class="hr_staffing.modules.common_login.model.Role">
+				<constructor-arg name="dsn">
+					<value>common_login</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="roleGateway" class="hr_staffing.modules.common_login.model.RoleGateway">
+				<constructor-arg name="dsn">
+					<value>common_login</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+		
+	<bean id="securityLevelService" class="hr_staffing.services.SecurityLevelService">
+		<constructor-arg name="object">
+			<bean id="securityLevelObject" class="hr_staffing.model.security_levels.SecurityLevel">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="securityLevelGateway" class="hr_staffing.model.security_levels.SecurityLevelGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="staffingMethodService" class="hr_staffing.services.StaffingMethodService">
+		<constructor-arg name="object">
+			<bean id="staffingMethodObject" class="hr_staffing.model.staffing_methods.StaffingMethod">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="staffingMethodGateway" class="hr_staffing.model.staffing_methods.StaffingMethodGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean id="statusService" class="hr_staffing.services.StatusService">
+		<constructor-arg name="object">
+			<bean id="statusObject" class="hr_staffing.model.statuses.status">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="statusGateway" class="hr_staffing.model.statuses.statusGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="tenureService" class="hr_staffing.services.TenureService">
+		<constructor-arg name="object">
+			<bean id="tenureObject" class="hr_staffing.model.tenures.tenure">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="tenureGateway" class="hr_staffing.model.tenures.tenureGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="transactionLog" class="hr_staffing.model.transactions.TransactionLog">
+		<constructor-arg name="dsn">
+			<value>${dsn}</value>
+		</constructor-arg>
+	</bean>
+		
+	<bean id="userObject" class="hr_staffing.model.users.User">
+		<constructor-arg name="dsn">
+			<value>${dsn}</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="userService" class="hr_staffing.modules.common_login.services.UserService">
+		<constructor-arg name="object">
+			<ref bean="userObject" />
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="userGateway" class="hr_staffing.model.users.UserGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+</beans>

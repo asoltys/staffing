@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+	<!-- EVENT-HANDLERS -->
+	<event-handlers>
+		<event-handler event="transactions.list" access="public">
+			<notify listener="transactionListener" method="prepareList" />
+			<view-page name="transactions.list" contentKey="request.content" />
+		</event-handler>
+	</event-handlers>
+	
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<page-view name="transactions.list" page="/views/transactions/list.cfm"/>
+	</page-views>
+	
+</mach-ii>

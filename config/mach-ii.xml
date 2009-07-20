@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+	<!-- PROPERTIES -->
+	<properties>
+		<property name="applicationRoot" value="/hr_staffing"/>
+		<property name="defaultEvent" value="home"/>
+		<property name="exceptionEvent" value="exception"/>
+		<property name="eventParameter" value="event"/>
+		<property name="parameterPrecedence" value="form"/>
+		<property name="maxEvents" value="10"/>
+		<property name="ColdspringComponentRelativePath" value="/HR_Staffing/config/coldspring.xml" />
+		<property name="dsn" value="human_resources"/>
+    <property name="userPath" value="hr_staffing.model.users.user" />
+	</properties>
+
+	<!-- MODULES -->
+	<modules>
+		<module name="common_login" file="modules/common_login/config/mach-ii.xml" />
+	</modules>
+
+	<!-- INCLUDES -->
+	<includes>
+		<include file="config/activities.xml" override="true" />
+		<include file="config/jobs.xml" override="true" />
+		<include file="config/pools.xml" override="true" />
+		<include file="config/positions.xml" override="true" />
+		<include file="config/processes.xml" override="true" />
+		<include file="config/reports.xml" override="true" />
+		<include file="config/transactions.xml" override="true" />
+	</includes>
+
+	<!-- LISTENERS -->
+	<listeners>
+		<listener name="activityListener" type="HR_Staffing.listeners.ActivityListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="commonUserListener" type="HR_Staffing.modules.common_login.listeners.CommonUserListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="jobListener" type="HR_Staffing.listeners.JobListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="loginListener" type="HR_Staffing.modules.common_login.listeners.LoginListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="poolListener" type="HR_Staffing.listeners.PoolListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="positionListener" type="HR_Staffing.listeners.PositionListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="processListener" type="HR_Staffing.listeners.ProcessListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="reportListener" type="HR_Staffing.listeners.ReportListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="transactionListener" type="HR_Staffing.listeners.TransactionListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+	</listeners>
+
+	<!-- EVENT-FILTERS -->
+	<event-filters>
+		<event-filter name="Authenticate" type="HR_Staffing.filters.Authenticate" />
+	</event-filters>
+
+	<!-- EVENT-HANDLERS -->
+	<event-handlers>
+		<event-handler event="ajax" access="public">
+			<view-page name="ajax_response" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="home" access="public">
+			<view-page name="home" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="permissionDenied" access="public">
+			<view-page name="permissionDenied" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="exception" access="private">
+			<view-page name="exception" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="nightly_routine" access="public">
+			<notify listener="positionListener" method="prepareNightlyRoutine" />
+			<view-page name="nightly_routine" contentKey="request.content" />
+		</event-handler>
+	</event-handlers>
+
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<page-view name="home" page="/views/home.cfm"/>
+		<page-view name="permissionDenied" page="/views/permission_denied.cfm"/>
+		<page-view name="exception" page="/views/exception.cfm"/>
+		<page-view name="ajax_response" page="/views/ajax_response.cfm"/>
+		<page-view name="nightly_routine" page="/views/nightly_routine.cfm"/>
+	</page-views>
+
+	<!-- PLUGINS -->
+	<plugins>
+		<plugin name="coldSpringPlugin" type="coldspring.machii.coldspringPlugin">
+			<parameters>
+				<parameter name="dsn" value="dsn"/>
+				<parameter name="beanFactoryPropertyName" value="beanFactory"/>
+				<parameter name="configFilePropertyName" value="ColdspringComponentRelativePath"/>
+				<parameter name="configFilePathIsRelative" value="true"/>
+				<parameter name="resolveMachiiDependencies" value="false"/>
+				<parameter name="parentBeanFactoryKey" value="beanFactory"/>
+			</parameters>
+		</plugin>
+
+		<plugin name="CommonLogin" type="cms.plugins.CommonLogin" />
+		<plugin name="Layout" type="cms.plugins.Layout" />
+	</plugins>
+</mach-ii>

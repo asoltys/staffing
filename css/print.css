@@ -1,0 +1,13 @@
+#fip, 
+#header, 
+#title_bar, 
+#left, 
+form#search_form, 
+.hidden{
+	display:none;
+}
+
+div#center {
+	margin-left:0px;
+	width: 600px;
+}

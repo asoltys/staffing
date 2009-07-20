@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+	<!-- EVENT-HANDLERS -->
+	<event-handlers>
+		<event-handler event="pools.form" access="public">
+			<filter name="Authenticate" />
+			<notify listener="poolListener" method="prepareForm" />
+			<view-page name="pools.form" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="pools.process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="poolListener" method="processForm" />
+		</event-handler>
+		
+		<event-handler event="pools.list" access="public">
+			<notify listener="poolListener" method="prepareList" />
+			<view-page name="pools.list" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="pools.delete" access="public">
+			<filter name="Authenticate" />
+			<notify listener="poolListener" method="delete" />
+		</event-handler>
+	</event-handlers>
+	
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<page-view name="pools.form" page="/views/pools/form.cfm"/>
+		<page-view name="pools.list" page="/views/pools/list.cfm"/>
+	</page-views>
+	
+</mach-ii>

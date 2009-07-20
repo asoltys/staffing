@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+	<!-- EVENT-HANDLERS -->
+	<event-handlers>
+		<event-handler event="reports.list" access="public">
+			<view-page name="reports.list" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="reports.birds_eye" access="public">
+			<notify listener="reportListener" method="birds_eye" />
+			<view-page name="reports.birds_eye" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="reports.branch_breakdown" access="public">
+			<view-page name="reports.branch_breakdown" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="reports.level_breakdown" access="public">
+			<view-page name="reports.level_breakdown" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="reports.assistants" access="public">
+			<view-page name="reports.assistants" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="reports.staffing_method_breakdown" access="public">
+			<view-page name="reports.staffing_method_breakdown" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="reports.tenure_breakdown" access="public">
+			<view-page name="reports.tenure_breakdown" contentKey="request.content" />
+		</event-handler>
+	</event-handlers>
+	
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<page-view name="reports.list" page="/views/reports/list.cfm"/>
+		<page-view name="reports.birds_eye" page="/views/reports/birds_eye.cfm"/>
+		<page-view name="reports.branch_breakdown" page="/views/reports/branch_breakdown.cfm"/>
+		<page-view name="reports.level_breakdown" page="/views/reports/level_breakdown.cfm"/>
+		<page-view name="reports.staffing_method_breakdown" page="/views/reports/staffing_method_breakdown.cfm"/>
+		<page-view name="reports.assistants" page="/views/reports/assistants.cfm"/>
+		<page-view name="reports.managers" page="/views/reports/managers.cfm"/>tenure_breakdown
+		<page-view name="reports.tenure_breakdown" page="/views/reports/tenure_breakdown.cfm"/>tenure_breakdown
+	</page-views>
+	
+</mach-ii>

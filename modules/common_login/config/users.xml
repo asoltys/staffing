@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+<!-- EVENT-HANDLERS -->
+	<event-handlers>
+	
+		<event-handler event="users.list" access="public">
+			<filter name="Authenticate" />
+			<notify listener="commonUserListener" method="prepareList" />
+			<view-page name="users.list" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="users.form" access="public">
+			<filter name="Authenticate" />
+			<notify listener="commonUserListener" method="prepareForm" />
+			<view-page name="users.form" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="users.process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="commonUserListener" method="processForm" />
+		</event-handler>
+		
+		<event-handler event="users.delete" access="public">
+			<filter name="Authenticate" />
+			<notify listener="commonUserListener" method="processDelete" />
+		</event-handler>
+		
+		<event-handler event="users.add" access="public">
+			<filter name="Authenticate" />
+			<notify listener="commonUserListener" method="processAdd" />
+		</event-handler>
+		
+	</event-handlers>
+		
+	<!-- PAGE-VIEWS -->
+	<page-views>	
+		<page-view name="users.list" page="/modules/common_login/views/users/list.cfm"/>
+		<page-view name="users.form" page="/modules/common_login/views/users/form.cfm"/>
+	</page-views>
+
+</mach-ii>
