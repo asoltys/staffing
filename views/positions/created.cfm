@@ -13,7 +13,7 @@
 </cfif>
 
 <cfmail 
-	from="PacificWeb.Services@pwgsc.gc.ca"
+	from="PacificWeb.Services@pwgsc-tpsgc.gc.ca"
 	to="#to#"
 	bcc="#bcc#"
 	subject="Newly Created HR Staffing Position" type="html">

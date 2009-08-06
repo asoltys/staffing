@@ -18,7 +18,7 @@
 			<cfset cc = request.human_resources_mailbox />
 		</cfif>
 		
-		<cfmail to="#to#" cc="#cc#" bcc="adam.soltys@pwgsc.gc.ca" from="#request.admin#" subject="Positions Report" type="html">
+		<cfmail to="#to#" cc="#cc#" bcc="adam.soltys@pwgsc-tpsgc.gc.ca" from="#request.admin#" subject="Positions Report" type="html">
 			<style>
 				table{
 					background:##FFFFFF;

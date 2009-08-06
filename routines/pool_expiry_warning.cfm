@@ -22,7 +22,7 @@
 
   <cfmail 
     to="#request.human_resources_mailbox#" 
-    from="'Pacific Web Services' <pacificweb.services@pwgsc.gc.ca>"
+    from="'Pacific Web Services' <pacificweb.services@pwgsc-tpsgc.gc.ca>"
     subject="Pool Expiration Notice" 
     type="html">
 
