@@ -140,7 +140,7 @@
 			<td><strong>Branch</strong></td>
 			<td>#position.job.branch#</td>
 			<td><strong>Location</strong></td>
-			<td>#position.location#</td>
+			<td>#position.location.name#</td>
 		</tr>
 	</table>
 </cffunction>

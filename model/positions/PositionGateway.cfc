@@ -37,10 +37,12 @@
 				positions.process_id,
 				positions.number,
 				jobs.title AS job_title,
+				locations.name AS location,
 				classification_levels.name AS classification_level_name,
 				classifications.name AS classification_name,
 				common_login..branches.name AS branch_name,
 				common_login..branches.acronym AS branch_acronym,
+				common_login..regions.name AS region_name,
 				cl_managers.first_name+' '+cl_managers.last_name as manager_name,
 				statuses.name AS status_name,
 				phases.name AS phase_name
@@ -53,12 +55,16 @@
 				ON processes.phase_id = phases.id
 			LEFT JOIN jobs 
 				ON jobs.id = positions.job_id
+      LEFT JOIN locations
+        ON positions.location_id = locations.id
 			LEFT JOIN staffing_users managers 
 				ON managers.id = positions.manager_id
 			LEFT JOIN common_login..users cl_managers 
 				ON managers.login = cl_managers.login
 			JOIN common_login..branches 
 				ON jobs.branch = common_login..branches.acronym
+      JOIN common_login..regions
+        ON locations.region = common_login..regions.acronym
 			JOIN classification_levels
 				ON jobs.classification_level_id = classification_levels.id
 			JOIN classifications
