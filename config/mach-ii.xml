@@ -28,6 +28,7 @@
 	<includes>
 		<include file="config/activities.xml" override="true" />
 		<include file="config/jobs.xml" override="true" />
+		<include file="config/locations.xml" override="true" />
 		<include file="config/pools.xml" override="true" />
 		<include file="config/positions.xml" override="true" />
 		<include file="config/processes.xml" override="true" />
@@ -46,6 +47,10 @@
 		</listener>
 
 		<listener name="jobListener" type="HR_Staffing.listeners.JobListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="locationListener" type="HR_Staffing.listeners.locationListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
