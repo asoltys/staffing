@@ -8,17 +8,16 @@
     <cfset addProperty('tenure_id', 'int') />
     <cfset addProperty('process_id', 'int') />
     <cfset addProperty('manager_id', 'int') />
-    <cfset addProperty('location_id', 'varchar') />
     <cfset addProperty('language_consideration_id', 'int') />
     <cfset addProperty('number', 'varchar') />
     <cfset addProperty('rationale', 'text') />
     <cfset addProperty('comments', 'text') />
     <cfset addProperty('fiscal_year', 'char') />
+    <cfset addProperty('location', 'varchar') />
     <cfset addProperty('infrastructure', 'bit') />
 		
 		<cfset belongsTo('language_consideration', 'hr_staffing.model.language_considerations.LanguageConsideration') />
 		<cfset belongsTo('job', 'hr_staffing.model.jobs.job') />
-		<cfset belongsTo('location', 'hr_staffing.model.locations.location') />
 		<cfset belongsTo('process', 'hr_staffing.model.processes.process') />
 		<cfset belongsTo('manager', 'hr_staffing.model.users.manager') />
 		<cfset belongsTo('tenure', 'hr_staffing.model.tenures.tenure') />
