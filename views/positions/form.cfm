@@ -153,7 +153,10 @@
 	
 	<label for="fiscal_year">Staffing Plan Fiscal Year</label>
 	<select id="fiscal_year" name="fiscal_year">
-		<cfloop from="#Year(Now())#" to="2007" index="curr_year" step="-1">
+    <cfset end_year = year(now()) + 1 />
+    <cfset start_year = 2007 />
+
+		<cfloop from="#end_year#" to="#start_year#" index="curr_year" step="-1">
 			<cfset selected = "" />
 			<cfset next_year = curr_year + 1 />
 			<cfif curr_year EQ position.fiscal_year>

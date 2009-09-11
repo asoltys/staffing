@@ -15,6 +15,8 @@
     <cfset addProperty('fiscal_year', 'char') />
     <cfset addProperty('location', 'varchar') />
     <cfset addProperty('infrastructure', 'bit') />
+
+    <cfset this.fiscal_year = year(now()) />
 		
 		<cfset belongsTo('language_consideration', 'hr_staffing.model.language_considerations.LanguageConsideration') />
 		<cfset belongsTo('job', 'hr_staffing.model.jobs.job') />

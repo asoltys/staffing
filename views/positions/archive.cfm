@@ -2,12 +2,13 @@
 
 <cfquery name="date_range" datasource="#request.dsn#">
 	SELECT 
-		min(fiscal_year) AS min 
+		min(fiscal_year) AS min,
+    max(fiscal_year) AS max
 	FROM positions
 </cfquery>
 
 <cfset start_year = date_range.min />
-<cfset end_year = Year(Now()) - 1 />
+<cfset end_year = date_range.max />
 
 <ul>
 	<cfloop from="#end_year#" to="#start_year#" index="year" step="-1">
