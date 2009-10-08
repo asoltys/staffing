@@ -118,6 +118,10 @@
 						<a href="#request.competency_path#index.cfm?event=jobs.job_profile&id=#position.job.id#&role=public">
 						Job Profile
 						</a>
+            <!--- 
+              Links temporarily removed per Betty's request.  
+              To be renabled in February 2010.  
+              Ref: #2866
 						|
 						<a href="#request.competency_path#index.cfm?event=jobs.competency_profile&id=#position.job.id#&role=public">
 						Competency Profile
@@ -126,6 +130,7 @@
 						<a href="#request.competency_path#index.cfm?event=jobs.learning_profile&id=#position.job.id#&role=public">
 						Learning Profile
 						</a>
+            --->
 					</span>
 				</cfif>
 			</th>
