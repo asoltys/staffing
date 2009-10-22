@@ -25,7 +25,7 @@
 
 <cfquery name="statuses" dbtype="query">
 	SELECT DISTINCT status
-	FROM master_query
+	FROM master_query WHERE status IS NOT NULL
 </cfquery>
 
 <cfoutput>
@@ -56,7 +56,7 @@
 					SELECT *
 					FROM master_query
 					WHERE id = #assistant_id#
-					AND status = '#status#'
+					AND (status = '#status#' OR ('#status#' = 'Not Started' AND status IS NULL))
 				</cfquery>
 				<td>#positions.recordcount#</td>
 			</cfloop>
