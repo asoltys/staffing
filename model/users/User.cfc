@@ -1,4 +1,4 @@
-<cfcomponent extends="cms.model.users.user">
+<cfcomponent extends="cms.model.users.User">
 	<cffunction name="configure" access="private" returntype="void">
 		<cfset super.configure() />
 		<cfset variables.table_name = "staffing_users" />

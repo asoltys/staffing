@@ -73,7 +73,7 @@
 	
 	<cfset var query = '' />
 	<cfset var list = createObject('component','supermodel.objectList') />
-	<cfset var role = createObject('component','common_login.modules.common_login.model.role') />
+	<cfset var role = createObject('component','common_login.modules.common_login.model.Role') />
 	<cfset role.init(variables.dsn) />
 	
 	<cfquery name="query" datasource="#variables.dsn#">
@@ -97,7 +97,7 @@
 	
 	<cfset var query = '' />
 	<cfset var list = createObject('component','supermodel.objectList') />
-	<cfset var role = createObject('component','common_login.modules.common_login.model.role') />
+	<cfset var role = createObject('component','common_login.modules.common_login.model.Role') />
 	<cfset role.init(variables.dsn) />
 	
 	<cfquery name="query" datasource="#variables.dsn#">
@@ -122,11 +122,11 @@
 	
 ---------------------------------------------------------------------------------------------------->	
 <cffunction name="getUsersByRole" access="public" returntype="supermodel.objectList">
-	<cfargument name="role" type="common_login.modules.common_login.model.role" required="yes" />
+	<cfargument name="role" type="common_login.modules.common_login.model.Role" required="yes" />
 	
 	<cfset var query = '' />
 	<cfset var list = createObject('component','supermodel.objectList') />
-	<cfset var user = createObject('component','common_login.modules.common_login.model.user') />
+	<cfset var user = createObject('component','common_login.modules.common_login.model.User') />
 	<cfset user.init(variables.dsn) />
 	
 	<cfquery name="query" datasource="#variables.dsn#">
@@ -148,8 +148,8 @@
 	
 ---------------------------------------------------------------------------------------------------->	
 <cffunction name="addUser" access="public" returntype="void">
-	<cfargument name="user" type="common_login.modules.common_login.model.user" required="yes" />
-	<cfargument name="role" type="common_login.modules.common_login.model.role" required="yes" />
+	<cfargument name="user" type="common_login.modules.common_login.model.User" required="yes" />
+	<cfargument name="role" type="common_login.modules.common_login.model.Role" required="yes" />
 	
 	<cfquery datasource="#variables.dsn#">
 		INSERT INTO user_application_roles(user_id,role_id,application_id)
@@ -169,7 +169,7 @@
 	
 ---------------------------------------------------------------------------------------------------->	
 <cffunction name="deleteUser" access="public" returntype="void">
-	<cfargument name="user" type="common_login.modules.common_login.model.user" required="yes" />
+	<cfargument name="user" type="common_login.modules.common_login.model.User" required="yes" />
 	
 	<cfquery datasource="#variables.dsn#">
 		DELETE
@@ -186,8 +186,8 @@
 	
 ---------------------------------------------------------------------------------------------------->	
 <cffunction name="updateUserRole" access="public" returntype="void">
-	<cfargument name="user" type="common_login.modules.common_login.model.user" required="yes" />
-	<cfargument name="role" type="common_login.modules.common_login.model.role" required="yes" />
+	<cfargument name="user" type="common_login.modules.common_login.model.User" required="yes" />
+	<cfargument name="role" type="common_login.modules.common_login.model.Role" required="yes" />
 
 	<cfquery datasource="#variables.dsn#">
 		UPDATE user_application_roles

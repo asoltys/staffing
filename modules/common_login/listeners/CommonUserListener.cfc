@@ -19,7 +19,7 @@
 	<cffunction name="prepareForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var user = createObject('component','common_login.modules.common_login.model.user') />
+		<cfset var user = createObject('component','common_login.modules.common_login.model.User') />
 		<cfset var app = request.current_user.application />
 		<cfset var roles = app.getAssignedRoles() />
 		<cfset user.init(request.dsn,app.name,request.current_user.getTableName()) />
@@ -63,8 +63,8 @@
 		<cfset var app = request.current_user.application />
 		<cfset var user_login = event.getArg('login') />
 		<cfset var role_id = event.getArg('role_id') />
-		<cfset var user = createObject('component','common_login.modules.common_login.model.user') />
-		<cfset var role = createObject('component','common_login.modules.common_login.model.role') />
+		<cfset var user = createObject('component','common_login.modules.common_login.model.User') />
+		<cfset var role = createObject('component','common_login.modules.common_login.model.Role') />
 		<cfset user.init(request.dsn,app.name,request.current_user.getTableName()) />
 		<cfset role.init(request.dsn) />
 		
@@ -84,8 +84,8 @@
 	<cffunction name="processAdd" access="public" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var user = createObject('component','common_login.modules.common_login.model.user') />
-		<cfset var role = createObject('component','common_login.modules.common_login.model.role') />
+		<cfset var user = createObject('component','common_login.modules.common_login.model.User') />
+		<cfset var role = createObject('component','common_login.modules.common_login.model.Role') />
 		<cfset var user_logins = event.getArg('user_logins') />
 		<cfset var role_id = event.getArg('role_id') />
 		<cfset var app = request.current_user.application />
@@ -111,7 +111,7 @@
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
 		<cfset var app = request.current_user.application />
-		<cfset var user = createObject('component','common_login.modules.common_login.model.user') />
+		<cfset var user = createObject('component','common_login.modules.common_login.model.User') />
 		<cfset user.init(request.dsn,app.name,request.current_user.getTableName()) />
     	<cfset user.readOrCreateFromLogin(arguments.event.getArg('login')) />
 		
