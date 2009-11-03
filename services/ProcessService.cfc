@@ -16,11 +16,11 @@
 		<cfset variables.transactionLog = arguments.transactionLog />
 	</cffunction>
 	
-	<cffunction name="getList" access="remote" returntype="supermodel.objectlist" output="true">
+	<cffunction name="getList" access="remote" returntype="supermodel.ObjectList" output="true">
 		<cfargument name="parameters" type="struct" default="#StructNew()#" />
 		
 		<cfset var query = variables.gateway.select() />
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 
 		<cfset list.init(
 			variables.object,

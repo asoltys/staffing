@@ -1,4 +1,4 @@
-<cfcomponent displayname="ProcessActivity" extends="supermodel.datamodel">
+<cfcomponent displayname="ProcessActivity" extends="supermodel.DataModel">
 
 <!------------------------------------------------------------------------------------------ configure
 

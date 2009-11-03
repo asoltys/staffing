@@ -1,4 +1,4 @@
-<cfcomponent extends="supermodel.datamodel">
+<cfcomponent extends="supermodel.DataModel">
 	<cffunction name="configure" access="public" returntype="void" output="false">
 		<cfset variables.table_name = 'transactions' />
 		<cfset belongsTo('process_activity', 'hr_staffing.model.process_activities.ProcessActivity') />

@@ -23,7 +23,7 @@
 	
 	<cffunction name="getUsers" access="remote" returntype="array" output="true"> 
 		<cfset var user_query = variables.userGateway.select() />
-		<cfset var user_list = createObject('component', 'supermodel.objectlist') />
+		<cfset var user_list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var user_array = ArrayNew(1) />
 
 		<cfset user_list.init(
@@ -43,7 +43,7 @@
 		<cfset gateway.init("common_login") />
 		<cfset user_query = gateway.usersNotInApplication(application_name="#variables.application_name#") />
 
-		<cfset user_list = createObject('component', 'supermodel.objectlist') />
+		<cfset user_list = createObject('component', 'supermodel.ObjectList') />
 
 		<cfset user_list.init(
 			user,

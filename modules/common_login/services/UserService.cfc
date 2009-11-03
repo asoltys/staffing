@@ -7,9 +7,9 @@
 		<cfset variables.gateway = arguments.gateway />	
 	</cffunction>
 	
-	<cffunction name="getCurrentUsersList" access="public" returntype="supermodel.objectlist">
+	<cffunction name="getCurrentUsersList" access="public" returntype="supermodel.ObjectList">
 		<cfset var query = variables.gateway.select() />
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 
 		<cfset list.init(
 			variables.object,
@@ -18,9 +18,9 @@
 		<cfreturn list />
 	</cffunction>
 	
-	<cffunction name="getUsersByRole" access="public" returntype="supermodel.objectlist">
+	<cffunction name="getUsersByRole" access="public" returntype="supermodel.ObjectList">
 		<cfargument name="role" type="string" required="yes" />	
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var query = variables.gateway.selectByRole(arguments.role) />
 
 		<cfset list.init(
@@ -30,9 +30,9 @@
 		<cfreturn list />
 	</cffunction>
 	
-	<cffunction name="getPotentialUsersList" access="remote" returntype="supermodel.objectlist" output="true"> 
+	<cffunction name="getPotentialUsersList" access="remote" returntype="supermodel.ObjectList" output="true"> 
 		<cfset var query = '' />
-		<cfset var list = createObject('component', 'supermodel.objectlist')  />
+		<cfset var list = createObject('component', 'supermodel.ObjectList')  />
 		<cfset query = variables.gateway.usersNotInApplication(application_name=application.applicationname) />
 
 		<cfset list.init(

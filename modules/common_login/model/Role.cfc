@@ -4,7 +4,7 @@
     <cfset addProperty('name', 'varchar') />
 		<cfset variables.dsn = 'common_login' />
 		<cfset variables.table_name = 'common_login..roles' />
-		<cfset hasMany('users', getPath() & 'user', 'user') />
+		<cfset hasMany('users', getPath() & 'User', 'user') />
 	</cffunction>
 
 	

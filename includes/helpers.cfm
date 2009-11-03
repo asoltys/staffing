@@ -33,7 +33,7 @@
 
 ----------------------------------------------------------------------------------------------------->
 
-<cffunction name="filter_positions" access="public" returntype="supermodel.objectlist">
+<cffunction name="filter_positions" access="public" returntype="supermodel.ObjectList">
 	<cfargument name="event" type="any" required="yes" />
 
 	<cfset var filtered_positions = positions.copy() />
@@ -381,7 +381,7 @@
 ----------------------------------------------------------------------------------------------------->
 
 <cffunction name="paginate" access="public" returntype="void" output="true">
-	<cfargument name="list" type="supermodel.objectlist" required="yes" />
+	<cfargument name="list" type="supermodel.ObjectList" required="yes" />
 	<cfargument name="event" />
 
 	<!--- Default values --->

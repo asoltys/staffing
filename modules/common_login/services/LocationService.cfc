@@ -7,9 +7,9 @@
 		<cfset variables.gateway = arguments.gateway />	
 	</cffunction>
 	
-	<cffunction name="getList" access="remote" returntype="supermodel.objectList" output="true"> 			
+	<cffunction name="getList" access="remote" returntype="supermodel.ObjectList" output="true"> 			
 		<cfset var query = variables.gateway.select() />
-		<cfset var list = createObject('component','supermodel.objectList') />
+		<cfset var list = createObject('component','supermodel.ObjectList') />
 		<cfset list.init(variables.object, query) />
 	
 		<cfreturn list />

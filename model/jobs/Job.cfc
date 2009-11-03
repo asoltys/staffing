@@ -1,4 +1,4 @@
-<cfcomponent extends="supermodel.datamodel">	
+<cfcomponent extends="supermodel.DataModel">	
 <!------------------------------------------------------------------------------------------- configure
 
 	Description:	

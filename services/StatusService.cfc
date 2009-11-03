@@ -20,8 +20,8 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 	
-	<cffunction name="getList" access="public" returntype="supermodel.objectlist">
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+	<cffunction name="getList" access="public" returntype="supermodel.ObjectList">
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var query = variables.gateway.select() />
 		
 		<cfset list.init(

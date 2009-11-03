@@ -1,4 +1,4 @@
-<cfcomponent extends="supermodel.datamodel">
+<cfcomponent extends="supermodel.DataModel">
 	<cffunction name="configure" access="public" returntype="void" output="false">
 		<cfset variables.object_path = 'hr_staffing.model.positions.action' />
 		<cfset variables.table_name = 'actions' />

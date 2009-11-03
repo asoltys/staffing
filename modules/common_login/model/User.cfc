@@ -35,12 +35,12 @@
 
 		<cfset variables.common_login_dsn = "common_login" />
 		<cfset variables.table_name = "users" />
-		<cfset belongsTo('role', getPath() & 'role') />
-		<cfset belongsTo('application', getPath() & 'application') />
-		<cfset belongsTo('branch', getPath() & 'branch') />
+		<cfset belongsTo('role', getPath() & 'Role') />
+		<cfset belongsTo('application', getPath() & 'Application') />
+		<cfset belongsTo('branch', getPath() & 'Branch') />
 		<cfset hasMany('applications', getPath() & 'Application','application') />
 		<cfset hasMany('committees', getPath() & 'Committee','committee') />
-		<cfset hasMany('roles', getPath() & 'role','role') />
+		<cfset hasMany('roles', getPath() & 'Role','role') />
 		
 		<cfset this.role_id = "" />
 		<cfset this.application_id = "" />
@@ -384,11 +384,11 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 	
-	<cffunction name="getRole" access="public" returntype="supermodel.dataModel">
+	<cffunction name="getRole" access="public" returntype="supermodel.DataModel">
 		<cfargument name="application" type="any" />
 		
 		<cfset var query = '' />
-		<cfset var role = createObject('component',getPath()&'role') />
+		<cfset var role = createObject('component',getPath()& 'Role') />
 		<cfset role.init(variables.dsn) />
 		
 		<cfquery name="query" datasource="#variables.dsn#">

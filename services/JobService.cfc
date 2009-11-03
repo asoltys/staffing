@@ -20,10 +20,10 @@
 	
 ---------------------------------------------------------------------------------------------------->
 	
-	<cffunction name="getList" access="public" returntype="supermodel.objectlist">
+	<cffunction name="getList" access="public" returntype="supermodel.ObjectList">
 		<cfargument name="parameters" type="struct" />
 		<cfset var query = '' />
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 
 		<cfif structKeyExists(arguments, 'parameters')>
 			<cfset query = variables.gateway.select(arguments.parameters.classification_level_id,

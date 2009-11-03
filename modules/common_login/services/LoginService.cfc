@@ -129,7 +129,7 @@
 
  			<cftry>
 				<!--- Get a blank user object --->
-				<cfobject name="user" component="common_login.model.users.user" />
+				<cfobject name="user" component="common_login.model.users.User" />
 
 				<!--- Initialize the user to use the correct dsn and application --->
 				<cfset user.init(

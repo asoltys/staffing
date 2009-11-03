@@ -1,4 +1,4 @@
-<cfcomponent displayname="Position" extends="SuperModel.DataModel" hint="A staffing position.">
+<cfcomponent displayname="Position" extends="supermodel.DataModel" hint="A staffing position.">
 	<cffunction name="configure" access="public" returntype="void" >
 		<cfset variables.table_name = 'positions' />
 
@@ -98,10 +98,10 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 	
-	<cffunction name="getCurrentAssignees" access="public" returntype="supermodel.objectlist">
+	<cffunction name="getCurrentAssignees" access="public" returntype="supermodel.ObjectList">
 		<cfset var userGateway = createObject('component', 'hr_staffing.model.users.UserGateway') />
 		<cfset var query = "" />
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var object = createObject('component', 'hr_staffing.model.users.User') />
 
 		<cfset object.init(variables.dsn) />
@@ -124,10 +124,10 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 	
-	<cffunction name="getPotentialAssignees" access="public" returntype="supermodel.objectlist">
+	<cffunction name="getPotentialAssignees" access="public" returntype="supermodel.ObjectList">
 		<cfset var userGateway = createObject('component', 'hr_staffing.model.users.UserGateway') />
 		<cfset var query = "" />
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var object = createObject('component', 'hr_staffing.model.users.User') />
 
 		<cfset object.init(variables.dsn) />

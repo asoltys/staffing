@@ -26,6 +26,6 @@
 		<cfset variables.table_name = 'common_login..committees' />
 		<cfset variables.dsn = 'common_login' />
 		<cfset variables.common_login_dsn = "common_login" />
-		<cfset hasMany('users', getPath() & 'user','user') />
+		<cfset hasMany('users', getPath() & 'User','user') />
 	</cffunction>
 </cfcomponent>

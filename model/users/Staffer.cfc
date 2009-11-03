@@ -58,7 +58,7 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 	
-	<cffunction name="getRecentlyEndangeredPositions" access="public" returntype="supermodel.objectlist">
+	<cffunction name="getRecentlyEndangeredPositions" access="public" returntype="supermodel.ObjectList">
 		<cfreturn getPositions("
 			DATEADD
 			(
@@ -77,7 +77,7 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 	
-	<cffunction name="getRecentlyLatePositions" access="public" returntype="supermodel.objectlist">
+	<cffunction name="getRecentlyLatePositions" access="public" returntype="supermodel.ObjectList">
 		<cfreturn getPositions("
 		processes_staffing_activities.est_completion_date = @Now 
 		AND 
@@ -90,13 +90,13 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 	
-	<cffunction name="getPositions" access="private" returntype="supermodel.objectlist">
+	<cffunction name="getPositions" access="private" returntype="supermodel.ObjectList">
 		<cfargument name="conditions" type="string" required="no" />
 		
 		<cfset var query = "" />
 		<cfset var object = createObject('component', 'hr_staffing.model.positions.position')>
 		<cfset var gateway = createObject('component', 'hr_staffing.model.positions.positiongateway')>
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset object.init(variables.dsn) />
 		<cfset gateway.init(variables.dsn) />
 		<cfset query = gateway.select() />

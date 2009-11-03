@@ -114,7 +114,7 @@
 
 	<!-- PLUGINS -->
 	<plugins>
-		<plugin name="coldSpringPlugin" type="coldspring.machii.coldspringPlugin">
+		<plugin name="coldSpringPlugin" type="coldspring.machii.ColdspringPlugin">
 			<parameters>
 				<parameter name="dsn" value="dsn"/>
 				<parameter name="beanFactoryPropertyName" value="beanFactory"/>

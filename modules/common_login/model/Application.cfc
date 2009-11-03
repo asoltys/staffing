@@ -5,7 +5,7 @@
 
 		<cfset variables.dsn = 'common_login' />
 		<cfset variables.table_name = 'common_login..applications' />
-		<cfset hasMany('users', getPath() & 'user', 'user') />
+		<cfset hasMany('users', getPath() & 'User', 'user') />
 	</cffunction>
 	
 <!--------------------------------------------------------------------------------------- selectQuery
@@ -37,11 +37,11 @@
 	Description:	
 	
 ---------------------------------------------------------------------------------------------------->	
-<cffunction name="getPotentialUsers" access="public" returntype="supermodel.objectList">
+<cffunction name="getPotentialUsers" access="public" returntype="supermodel.ObjectList">
 	
 	<cfset var query = '' />
-	<cfset var list = createObject('component','supermodel.objectList') />
-	<cfset var user = createObject('component','common_login.model.users.user') />
+	<cfset var list = createObject('component','supermodel.ObjectList') />
+	<cfset var user = createObject('component','common_login.model.users.User') />
 	<cfset user.init(variables.dsn) />
 	
 	<cfquery name="query" datasource="#variables.dsn#">
@@ -69,10 +69,10 @@
 	Description:	
 	
 ---------------------------------------------------------------------------------------------------->	
-<cffunction name="getAssignedRoles" access="public" returntype="supermodel.objectList">
+<cffunction name="getAssignedRoles" access="public" returntype="supermodel.ObjectList">
 	
 	<cfset var query = '' />
-	<cfset var list = createObject('component','supermodel.objectList') />
+	<cfset var list = createObject('component','supermodel.ObjectList') />
 	<cfset var role = createObject('component','common_login.modules.common_login.model.Role') />
 	<cfset role.init(variables.dsn) />
 	
@@ -93,10 +93,10 @@
 	Description:	
 	
 ---------------------------------------------------------------------------------------------------->	
-<cffunction name="getRemainingRoles" access="public" returntype="supermodel.objectList">
+<cffunction name="getRemainingRoles" access="public" returntype="supermodel.ObjectList">
 	
 	<cfset var query = '' />
-	<cfset var list = createObject('component','supermodel.objectList') />
+	<cfset var list = createObject('component','supermodel.ObjectList') />
 	<cfset var role = createObject('component','common_login.modules.common_login.model.Role') />
 	<cfset role.init(variables.dsn) />
 	
@@ -121,11 +121,11 @@
 	Description:	
 	
 ---------------------------------------------------------------------------------------------------->	
-<cffunction name="getUsersByRole" access="public" returntype="supermodel.objectList">
+<cffunction name="getUsersByRole" access="public" returntype="supermodel.ObjectList">
 	<cfargument name="role" type="common_login.modules.common_login.model.Role" required="yes" />
 	
 	<cfset var query = '' />
-	<cfset var list = createObject('component','supermodel.objectList') />
+	<cfset var list = createObject('component','supermodel.ObjectList') />
 	<cfset var user = createObject('component','common_login.modules.common_login.model.User') />
 	<cfset user.init(variables.dsn) />
 	

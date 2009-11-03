@@ -1,4 +1,4 @@
-<cfcomponent extends="SuperModel.Gateway">
+<cfcomponent extends="supermodel.Gateway">
 <!------------------------------------------------------------------------------------------ configure
 
 	Description:	Carries out the configuration required for this object to act as a SuperModel

@@ -22,7 +22,7 @@
 
 	<cffunction name="getPositions" access="remote" returntype="array" output="true">
 		<cfset var position_query = variables.positionGateway.select() />
-		<cfset var position_list = createObject('component', 'supermodel.objectlist') />
+		<cfset var position_list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var position_array = ArrayNew(1) />
 
 		<cfset position_list.init(
@@ -40,11 +40,11 @@
 	
 ---------------------------------------------------------------------------------------------------->
 
-	<cffunction name="getList" access="remote" returntype="supermodel.objectlist" output="true">
+	<cffunction name="getList" access="remote" returntype="supermodel.ObjectList" output="true">
 		<cfargument name="parameters" type="struct" default="#StructNew()#" />
 		
 		<cfset var position_query = "" />
-		<cfset var position_list = createObject('component', 'supermodel.objectlist') />
+		<cfset var position_list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var conditions = "1=1" />
 
     <cfif not structKeyExists(arguments.parameters, 'fiscal_year') OR arguments.parameters.fiscal_year EQ "">

@@ -1,4 +1,4 @@
-<cfcomponent extends="SuperModel.DataModel">
+<cfcomponent extends="supermodel.DataModel">
 	<cffunction name="configure" access="public" returntype="void" >
 		<cfset variables.table_name = 'processes' />
 		<cfset belongsTo('board_chair', 'hr_staffing.model.users.user') />
@@ -199,7 +199,7 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 
-	<cffunction name="getPositions" access="public"  returntype="supermodel.objectlist">
+	<cffunction name="getPositions" access="public"  returntype="supermodel.ObjectList">
 		<cfset var positionService = createObject('component', 'hr_staffing.services.positionService') />
 		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
 		<cfset var gateway = createObject('component', 'hr_staffing.model.positions.positionGateway') />
@@ -217,9 +217,9 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 
-	<cffunction name="getComments" access="public"  returntype="supermodel.objectlist">
+	<cffunction name="getComments" access="public"  returntype="supermodel.ObjectList">
 		<cfset var query = "" />
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var object = createObject('component', 'hr_staffing.model.comments.Comment') />
 		<cfset object.configure() />
 		<cfset object.init(variables.dsn) />
@@ -269,10 +269,10 @@
 			
 ----------------------------------------------------------------------------------------------------->	
 
-	<cffunction name="getTransactions" access="public" returntype="supermodel.objectlist">
+	<cffunction name="getTransactions" access="public" returntype="supermodel.ObjectList">
 		<cfset var query = "" />
 		<cfset var object = createObject('component', 'hr_staffing.model.transactions.transaction') />
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		
 		<cfset object.init(variables.dsn) />
 		

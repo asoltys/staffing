@@ -6,11 +6,11 @@
 
 	</cffunction>
 	
-	<cffunction name="getList" access="public" returntype="supermodel.objectlist">
+	<cffunction name="getList" access="public" returntype="supermodel.ObjectList">
 	
 		<cfset var object = createObject('component', 'hr_staffing.model.classifications.Classification') />
 		<cfset var query = '' />
-		<cfset var list = createObject('component', 'supermodel.objectlist') />
+		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var gateway = createObject('component', 'hr_staffing.model.classifications.ClassificationGateway') />	
 		<cfset gateway.configure() />
 		<cfset gateway.init(variables.dsn) />

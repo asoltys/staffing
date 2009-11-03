@@ -12,7 +12,7 @@
   WHERE expiry_date = #DateAdd('M', 1, DateFormat(Now(), "yyyy-mm-dd"))#
 </cfquery>
 
-<cfset pools = createObject('component', 'supermodel.objectlist') />
+<cfset pools = createObject('component', 'supermodel.ObjectList') />
 <cfset pools.init(pool, query) />
 
 <cfoutput>
