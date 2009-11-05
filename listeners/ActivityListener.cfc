@@ -19,7 +19,7 @@
 	<cffunction name="prepareForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var activity = createObject('component', 'hr_staffing.model.activities.activity') />
+		<cfset var activity = createObject('component', 'hr_staffing.model.activities.Activity') />
 		<cfset var phaseService = getProperty('beanFactory').getBean('phaseService') />
 		
 		<cfset var phases = phaseService.getList() />
@@ -47,7 +47,7 @@
 	<cffunction name="processForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var activity = createObject('component', 'hr_staffing.model.activities.activity') />
+		<cfset var activity = createObject('component', 'hr_staffing.model.activities.Activity') />
 		<cfset var return_url = session['return_url'] />
 		<cfset structDelete(session, 'return_url') />
 		

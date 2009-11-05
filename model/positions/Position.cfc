@@ -19,10 +19,10 @@
     <cfset this.fiscal_year = year(now()) />
 		
 		<cfset belongsTo('language_consideration', 'hr_staffing.model.language_considerations.LanguageConsideration') />
-		<cfset belongsTo('job', 'hr_staffing.model.jobs.job') />
-		<cfset belongsTo('process', 'hr_staffing.model.processes.process') />
+		<cfset belongsTo('job', 'hr_staffing.model.jobs.Job') />
+		<cfset belongsTo('process', 'hr_staffing.model.processes.Process') />
 		<cfset belongsTo('manager', 'hr_staffing.model.users.manager') />
-		<cfset belongsTo('tenure', 'hr_staffing.model.tenures.tenure') />
+		<cfset belongsTo('tenure', 'hr_staffing.model.tenures.Tenure') />
 		<cfset belongsTo('security_level', 'hr_staffing.model.security_levels.SecurityLevel') />
 		<cfset hasMany('assignees', 'hr_staffing.model.users.User', 'assignee') />
 	</cffunction>
@@ -99,7 +99,7 @@
 ----------------------------------------------------------------------------------------------------->	
 	
 	<cffunction name="getCurrentAssignees" access="public" returntype="supermodel.ObjectList">
-		<cfset var userGateway = createObject('component', 'hr_staffing.model.users.UserGateway') />
+		<cfset var userGateway = createObject('component', 'hr_staffing.model.users.userGateway') />
 		<cfset var query = "" />
 		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var object = createObject('component', 'hr_staffing.model.users.User') />
@@ -125,7 +125,7 @@
 ----------------------------------------------------------------------------------------------------->	
 	
 	<cffunction name="getPotentialAssignees" access="public" returntype="supermodel.ObjectList">
-		<cfset var userGateway = createObject('component', 'hr_staffing.model.users.UserGateway') />
+		<cfset var userGateway = createObject('component', 'hr_staffing.model.users.userGateway') />
 		<cfset var query = "" />
 		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var object = createObject('component', 'hr_staffing.model.users.User') />

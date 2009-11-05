@@ -13,6 +13,6 @@
     <cfargument name="targetPage" type="string" required="yes">
 
     <cfinclude template="../server_settings.cfm" />
-    <cfinvoke method="setupRequest" component="cms.helpers.helpers" user_path="hr_staffing.model.users.user" />
+    <cfinvoke method="setupRequest" component="cms.helpers.helpers" user_path="hr_staffing.model.users.User" />
   </cffunction>
 </cfcomponent>

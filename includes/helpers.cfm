@@ -231,7 +231,7 @@
 ----------------------------------------------------------------------------------------------------->
 
 <cffunction name="process_details" access="public" returntype="void" output="true">
-	<cfargument name="process" type="hr_staffing.model.processes.process" required="no" />
+	<cfargument name="process" type="hr_staffing.model.processes.Process" required="no" />
 	<cfargument name="displayPositions" type="boolean" default="false" />
 
 	<table id="process_details_#process.id#" class="process details #process.getStatusClass(request.current_user)#">

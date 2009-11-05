@@ -1,12 +1,12 @@
 <cfcomponent extends="supermodel.DataModel">
 	<cffunction name="configure" access="public" returntype="void" >
 		<cfset variables.table_name = 'processes' />
-		<cfset belongsTo('board_chair', 'hr_staffing.model.users.user') />
-		<cfset belongsTo('phase', 'hr_staffing.model.phases.phase') />
+		<cfset belongsTo('board_chair', 'hr_staffing.model.users.User') />
+		<cfset belongsTo('phase', 'hr_staffing.model.phases.Phase') />
 		<cfset belongsTo('staffing_method', 'hr_staffing.model.staffing_methods.StaffingMethod') />
-		<cfset belongsTo('status', 'hr_staffing.model.statuses.status') />
+		<cfset belongsTo('status', 'hr_staffing.model.statuses.Status') />
 		
-		<cfset hasMany('comments', 'hr_staffing.model.comments.comment', 'comment') />
+		<cfset hasMany('comments', 'hr_staffing.model.comments.Comment', 'comment') />
 		<cfset hasMany('transactions', 'hr_staffing.model.transactions.Transaction', 'transaction') />
 		<cfset hasMany('process_activities', 'hr_staffing.model.process_activities.ProcessActivity', 'process_activity') />
 		<cfset hasMany('positions', 'hr_staffing.model.positions.position', 'position') />
@@ -128,7 +128,7 @@
 ----------------------------------------------------------------------------------------------------->	
 	
 	<cffunction name="getStatusClass" access="public" returntype="string">	
-		<cfargument name="user" type="hr_staffing.model.users.user" required="yes" />
+		<cfargument name="user" type="hr_staffing.model.users.User" required="yes" />
 		<cfargument name="status" type="string" default="#this.status.name#" />
 		
 		<cfset var return_value = "not_started" />
@@ -200,9 +200,9 @@
 ----------------------------------------------------------------------------------------------------->	
 
 	<cffunction name="getPositions" access="public"  returntype="supermodel.ObjectList">
-		<cfset var positionService = createObject('component', 'hr_staffing.services.positionService') />
+		<cfset var positionService = createObject('component', 'hr_staffing.services.PositionService') />
 		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
-		<cfset var gateway = createObject('component', 'hr_staffing.model.positions.positionGateway') />
+		<cfset var gateway = createObject('component', 'hr_staffing.model.positions.PositionGateway') />
 		<cfset var parameters = structNew() />
 		<cfset parameters.process_id = this.id />
 		<cfset position.init(variables.dsn) />
@@ -271,7 +271,7 @@
 
 	<cffunction name="getTransactions" access="public" returntype="supermodel.ObjectList">
 		<cfset var query = "" />
-		<cfset var object = createObject('component', 'hr_staffing.model.transactions.transaction') />
+		<cfset var object = createObject('component', 'hr_staffing.model.transactions.Transaction') />
 		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		
 		<cfset object.init(variables.dsn) />

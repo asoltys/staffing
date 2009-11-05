@@ -19,7 +19,7 @@
 	<cffunction name="prepareForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var pool = createObject('component', 'hr_staffing.model.pools.pool') />
+		<cfset var pool = createObject('component', 'hr_staffing.model.pools.Pool') />
 
 		<cfset var classificationLevelService = getProperty('beanFactory').getBean('classificationLevelService') />
 		<cfset var processService = getProperty('beanFactory').getBean('processService') />
@@ -57,7 +57,7 @@
 	<cffunction name="processForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var pool = createObject('component', 'hr_staffing.model.pools.pool') />
+		<cfset var pool = createObject('component', 'hr_staffing.model.pools.Pool') />
 		<cfset pool.init(request.dsn) />
 
 		<!--- If there is an id parameter then we update the object --->
@@ -117,7 +117,7 @@
 	<cffunction name="delete" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var pool = createObject('component', 'hr_staffing.model.pools.pool') />
+		<cfset var pool = createObject('component', 'hr_staffing.model.pools.Pool') />
 
 		<cfset pool.init(request.dsn) />
 		<cfset pool.read(event.getArg('pool_id')) />

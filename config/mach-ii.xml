@@ -16,7 +16,7 @@
 		<property name="maxEvents" value="10"/>
 		<property name="ColdspringComponentRelativePath" value="/HR_Staffing/config/coldspring.xml" />
 		<property name="dsn" value="human_resources"/>
-    <property name="userPath" value="hr_staffing.model.users.user" />
+    <property name="userPath" value="hr_staffing.model.users.User" />
 	</properties>
 
 	<!-- MODULES -->
@@ -37,7 +37,7 @@
 
 	<!-- LISTENERS -->
 	<listeners>
-		<listener name="activityListener" type="HR_Staffing.listeners.ActivityListener">
+		<listener name="activityListener" type="hr_staffing.listeners.ActivityListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
@@ -45,7 +45,7 @@
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
-		<listener name="jobListener" type="HR_Staffing.listeners.JobListener">
+		<listener name="jobListener" type="hr_staffing.listeners.JobListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
@@ -53,23 +53,23 @@
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
-		<listener name="poolListener" type="HR_Staffing.listeners.PoolListener">
+		<listener name="poolListener" type="hr_staffing.listeners.PoolListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
-		<listener name="positionListener" type="HR_Staffing.listeners.PositionListener">
+		<listener name="positionListener" type="hr_staffing.listeners.PositionListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
-		<listener name="processListener" type="HR_Staffing.listeners.ProcessListener">
+		<listener name="processListener" type="hr_staffing.listeners.ProcessListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
-		<listener name="reportListener" type="HR_Staffing.listeners.ReportListener">
+		<listener name="reportListener" type="hr_staffing.listeners.ReportListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
-		<listener name="transactionListener" type="HR_Staffing.listeners.TransactionListener">
+		<listener name="transactionListener" type="hr_staffing.listeners.TransactionListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 	</listeners>

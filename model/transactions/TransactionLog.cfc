@@ -6,7 +6,7 @@
 	</cffunction>
 	
 	<cffunction name="addTransaction" access="public" returntype="void" output="false">
-		<cfargument name="transaction" type="hr_staffing.model.transactions.transaction" required="yes" />
+		<cfargument name="transaction" type="hr_staffing.model.transactions.Transaction" required="yes" />
 		
 		<cfset var old_value = "" />
 		<cfset var new_value = "" />

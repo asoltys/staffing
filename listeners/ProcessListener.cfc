@@ -19,7 +19,7 @@
 	<cffunction name="prepareForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var process = createObject('component', 'hr_staffing.model.processes.process') />
+		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
 
 		<cfset var staffingMethodService = getProperty('beanFactory').getBean('staffingMethodService') />
 		<cfset var userService = getProperty('beanFactory').getBean('userService') />
@@ -54,7 +54,7 @@
 	<cffunction name="processForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var process = createObject('component', 'hr_staffing.model.processes.process') />
+		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
 		<cfset process.init(request.dsn) />
 
 		<cfif NOT event.isArgDefined('collective')>
@@ -118,7 +118,7 @@
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
 		<cfset var statusService = getProperty('beanFactory').getBean('statusService') />
-		<cfset var process = createObject('component', 'hr_staffing.model.processes.process') />
+		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
 		<cfset var statuses = "" />
 		<cfset var process_activities = "" />
 
@@ -149,8 +149,8 @@
 	<cffunction name="updateSSDA" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var process = createObject('component', 'hr_staffing.model.processes.process') />
-		<cfset var transaction = createObject('component', 'hr_staffing.model.transactions.transaction') />
+		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
+		<cfset var transaction = createObject('component', 'hr_staffing.model.transactions.Transaction') />
 		<cfset var process_activities = "" />
 		<cfset var activity = "" />
 
@@ -216,7 +216,7 @@
 	<cffunction name="deleteProcess" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var process = createObject('component', 'hr_staffing.model.processes.process') />
+		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
 
 		<cfset process.init(request.dsn) />
 		<cfset process.read(event.getArg('process_id')) />
@@ -279,8 +279,8 @@
 	<cffunction name="addComment" access="public" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var process = createObject('component', 'hr_staffing.model.processes.process') />
-		<cfset var comment = createObject('component', 'hr_staffing.model.comments.comment') />
+		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
+		<cfset var comment = createObject('component', 'hr_staffing.model.comments.Comment') />
 
 		<cfset process.init(request.dsn) />
 		<cfset comment.init(request.dsn) />
@@ -302,7 +302,7 @@
 	<cffunction name="removeComment" access="public" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 
-		<cfset var comment = createObject('component', 'hr_staffing.model.comments.comment') />
+		<cfset var comment = createObject('component', 'hr_staffing.model.comments.Comment') />
 		<cfset comment.init(request.dsn) />
 		<cfset comment.read(event.getArg('comment_id')) />
 		<cfset comment.delete() />

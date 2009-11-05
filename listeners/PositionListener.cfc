@@ -310,7 +310,7 @@
 		<cfset var staffingMethodService = getProperty('beanFactory').getBean('staffingMethodService') />
 		
 		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
-		<cfset var process = createObject('component', 'hr_staffing.model.processes.process') />
+		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
 		<cfset var processes = processService.getList() />
 		<cfset var board_chairs = userService.getCurrentUsersList() />
 		<cfset var staffing_methods = staffingMethodService.getList() />
@@ -349,7 +349,7 @@
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
 		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
-		<cfset var process = createObject('component', 'hr_staffing.model.processes.process') />
+		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
 
     <cfif not event.isArgDefined('collective')>
 		  <cfset event.setArg('collective', '0') />

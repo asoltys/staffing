@@ -1,7 +1,7 @@
-<cfset pool= createObject('component', 'hr_staffing.model.pools.pool') />
+<cfset pool= createObject('component', 'hr_staffing.model.pools.Pool') />
 <cfset pool.init(request.dsn) />
 
-<cfset poolGateway = createObject('component', 'hr_staffing.model.pools.poolGateway') />
+<cfset poolGateway = createObject('component', 'hr_staffing.model.pools.PoolGateway') />
 <cfset poolGateway.init(request.dsn) />
 
 <cfset query = poolGateway.select() />

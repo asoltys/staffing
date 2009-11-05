@@ -14,7 +14,7 @@
 
 		<cfinclude template="../server_settings.cfm" />
 
-		<cfinvoke component="cms.helpers.helpers" method="setupRequest" user_path="hr_staffing.model.users.user" />
+		<cfinvoke component="cms.helpers.helpers" method="setupRequest" user_path="hr_staffing.model.users.User" />
 		<cfinvoke component="cms.helpers.helpers" method="includePage" targetPage="#arguments.targetPage#" />
 	</cffunction>
 

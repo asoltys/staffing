@@ -1,6 +1,6 @@
 <cfcomponent extends="supermodel.DataModel">
 	<cffunction name="configure" access="public" returntype="void" output="false">
-		<cfset variables.object_path = 'hr_staffing.model.positions.action' />
+		<cfset variables.object_path = 'hr_staffing.model.positions.Action' />
 		<cfset variables.table_name = 'actions' />
 	</cffunction>
 	

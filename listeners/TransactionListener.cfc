@@ -19,7 +19,7 @@
 	<cffunction name="prepareList" access="public" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var process = createObject('component', 'hr_staffing.model.processes.process') />
+		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
 		<cfset process.init(request.dsn) />
 		<cfset process.read(event.getArg('process_id')) />
 		<cfset process.readTransactions() />

@@ -3,7 +3,7 @@
 		<cfset super.configure() />
 
 		<cfset hasMany('positions', 'hr_staffing.model.positions.position', 'position') />
-		<cfset hasMany('transactions', 'hr_staffing.model.transactions.transaction', 'transaction') />
+		<cfset hasMany('transactions', 'hr_staffing.model.transactions.Transaction', 'transaction') />
 	</cffunction>
 	
 <!----------------------------------------------------------------------------------- readTransactions

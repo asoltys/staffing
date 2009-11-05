@@ -5,7 +5,7 @@
 		<cfset variables.dsn = 'hr_staffing' />
 		<cfset variables.application_name = 'HR Portal' />
 		
-		<cfset variables.user = createObject('component', 'hr_staffing.model.users.user') />
+		<cfset variables.user = createObject('component', 'hr_staffing.model.users.User') />
 		<cfset variables.user.configure() />
 		<cfset variables.user.init(variables.dsn) />
 		
@@ -14,7 +14,7 @@
 		<cfset variables.userGateway.init(variables.dsn) />
 	</cffunction>
 	
-	<cffunction name="getUser" access="remote" returntype="hr_staffing.model.users.user" output="false">
+	<cffunction name="getUser" access="remote" returntype="hr_staffing.model.users.User" output="false">
 		<cfargument name="login" type="string" required="yes" />
 		<cfset variables.user.readOrCreateFromLogin(arguments.login) />
 		
@@ -55,7 +55,7 @@
 	</cffunction>
 	
 	<cffunction name="addUser" access="remote" returntype="User" output="false">
-		<cfargument name="user" type="hr_staffing.model.users.user" required="yes" />
+		<cfargument name="user" type="hr_staffing.model.users.User" required="yes" />
 		
 		<cfset var common_user = createObject('component','common_login.model.users.User') />
 		<cfset common_user.configure() />
@@ -75,7 +75,7 @@
 	</cffunction>
 	
 	<cffunction name="deleteUser" access="remote" returntype="void" output="false">
-		<cfargument name="user" type="hr_staffing.model.users.user" required="yes" />
+		<cfargument name="user" type="hr_staffing.model.users.User" required="yes" />
 		
 		<cfset var common_user = createObject('component','common_login.model.users.User') />
 		<cfset common_user.configure() />

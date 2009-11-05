@@ -2,7 +2,7 @@
 	<cffunction name="configure" access="public" returntype="void" output="false">
 		<cfset variables.table_name = 'transactions' />
 		<cfset belongsTo('process_activity', 'hr_staffing.model.process_activities.ProcessActivity') />
-		<cfset belongsTo('user', 'hr_staffing.model.users.user') />
+		<cfset belongsTo('user', 'hr_staffing.model.users.User') />
 	</cffunction>
 
 <!------------------------------------------------------------------------------------------ getAction
@@ -44,7 +44,7 @@
 
 		<cfset var status = '' />
 		<cfif this.action EQ 'status_id' AND isNumeric(this[arguments.attribute])>
-			<cfset status = createObject('component', 'hr_staffing.model.statuses.status') />
+			<cfset status = createObject('component', 'hr_staffing.model.statuses.Status') />
 			<cfset status.init(variables.dsn) />
 			<cfset status.read(this[arguments.attribute]) />
 			<cfreturn status.name />

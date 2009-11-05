@@ -81,7 +81,7 @@
 	<cffunction name="processForm" access="public" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var job = createObject('component', 'hr_staffing.model.jobs.job') />
+		<cfset var job = createObject('component', 'hr_staffing.model.jobs.Job') />
 		<cfset job.init(request.dsn) />
 		
     <cfset job.load(arguments.event.getArgs()) />		
@@ -109,7 +109,7 @@
 	<cffunction name="processDelete" access="public" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var job = createObject('component', 'hr_staffing.model.jobs.job') />
+		<cfset var job = createObject('component', 'hr_staffing.model.jobs.Job') />
 		<cfset job.init(request.dsn) />
 		
     	<cfset job.load(arguments.event.getArgs()) />

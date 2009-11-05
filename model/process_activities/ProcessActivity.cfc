@@ -9,9 +9,9 @@
 	<cffunction name="configure" access="public" returntype="void" output="false">
 		<cfset variables.table_name = "processes_staffing_activities" />
 
-		<cfset belongsTo('process', 'hr_staffing.model.processes.process') />
-		<cfset belongsTo('activity', 'hr_staffing.model.activities.activity') />
-		<cfset belongsTo('status', 'hr_staffing.model.statuses.status') />
+		<cfset belongsTo('process', 'hr_staffing.model.processes.Process') />
+		<cfset belongsTo('activity', 'hr_staffing.model.activities.Activity') />
+		<cfset belongsTo('status', 'hr_staffing.model.statuses.Status') />
 	</cffunction>
 
 <!------------------------------------------------------------------------------------------ getStatus
@@ -41,7 +41,7 @@
 ----------------------------------------------------------------------------------------------------->
 
 	<cffunction name="getStatusClass" access="public" returntype="string">
-		<cfargument name="user" type="hr_staffing.model.users.user" required="yes" />
+		<cfargument name="user" type="hr_staffing.model.users.User" required="yes" />
 		<cfargument name="status" type="string" default="#getStatus()#" />
 
 		<cfset var return_value = "not_started" />

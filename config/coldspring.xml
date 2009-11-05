@@ -162,16 +162,16 @@
 		</constructor-arg>
 	</bean>
 	
-	<bean id="poolService" class="hr_staffing.services.poolService">
+	<bean id="poolService" class="hr_staffing.services.PoolService">
 		<constructor-arg name="object">
-			<bean id="poolObject" class="hr_staffing.model.pools.pool">
+			<bean id="poolObject" class="hr_staffing.model.pools.Pool">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="gateway">
-			<bean id="poolGateway" class="hr_staffing.model.pools.poolGateway">
+			<bean id="poolGateway" class="hr_staffing.model.pools.PoolGateway">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>
@@ -253,14 +253,14 @@
 
 	<bean id="statusService" class="hr_staffing.services.StatusService">
 		<constructor-arg name="object">
-			<bean id="statusObject" class="hr_staffing.model.statuses.status">
+			<bean id="statusObject" class="hr_staffing.model.statuses.Status">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="gateway">
-			<bean id="statusGateway" class="hr_staffing.model.statuses.statusGateway">
+			<bean id="statusGateway" class="hr_staffing.model.statuses.StatusGateway">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>
@@ -270,14 +270,14 @@
 	
 	<bean id="tenureService" class="hr_staffing.services.TenureService">
 		<constructor-arg name="object">
-			<bean id="tenureObject" class="hr_staffing.model.tenures.tenure">
+			<bean id="tenureObject" class="hr_staffing.model.tenures.Tenure">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="gateway">
-			<bean id="tenureGateway" class="hr_staffing.model.tenures.tenureGateway">
+			<bean id="tenureGateway" class="hr_staffing.model.tenures.TenureGateway">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>
@@ -302,7 +302,7 @@
 			<ref bean="userObject" />
 		</constructor-arg>
 		<constructor-arg name="gateway">
-			<bean id="userGateway" class="hr_staffing.model.users.UserGateway">
+			<bean id="userGateway" class="hr_staffing.model.users.userGateway">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>

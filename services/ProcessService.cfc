@@ -48,7 +48,7 @@
 	</cffunction>
 	
 	<cffunction name="updateTransactionLog" access="remote" returntype="void" output="false">
-		<cfargument name="transaction" type="hr_staffing.model.transactions.transaction" required="yes" />
+		<cfargument name="transaction" type="hr_staffing.model.transactions.Transaction" required="yes" />
 		
 		<cfset variables.transactionLog.addTransaction(arguments.transaction) />
 	</cffunction>

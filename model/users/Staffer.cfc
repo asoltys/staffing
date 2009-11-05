@@ -3,7 +3,7 @@
 		<cfset super.configure() />
 		
 		<cfset hasMany('positions', 'hr_staffing.model.positions.position', 'position') />
-		<cfset hasMany('transactions', 'hr_staffing.model.transactions.transaction', 'transaction') />
+		<cfset hasMany('transactions', 'hr_staffing.model.transactions.Transaction', 'transaction') />
 	</cffunction>
 	
 <!----------------------------------------------------------------------------------- readTransactions
@@ -95,7 +95,7 @@
 		
 		<cfset var query = "" />
 		<cfset var object = createObject('component', 'hr_staffing.model.positions.position')>
-		<cfset var gateway = createObject('component', 'hr_staffing.model.positions.positiongateway')>
+		<cfset var gateway = createObject('component', 'hr_staffing.model.positions.PositionGateway')>
 		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset object.init(variables.dsn) />
 		<cfset gateway.init(variables.dsn) />
