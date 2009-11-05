@@ -21,7 +21,7 @@
 		<cfset belongsTo('language_consideration', 'hr_staffing.model.language_considerations.LanguageConsideration') />
 		<cfset belongsTo('job', 'hr_staffing.model.jobs.Job') />
 		<cfset belongsTo('process', 'hr_staffing.model.processes.Process') />
-		<cfset belongsTo('manager', 'hr_staffing.model.users.manager') />
+		<cfset belongsTo('manager', 'hr_staffing.model.users.Manager') />
 		<cfset belongsTo('tenure', 'hr_staffing.model.tenures.Tenure') />
 		<cfset belongsTo('security_level', 'hr_staffing.model.security_levels.SecurityLevel') />
 		<cfset hasMany('assignees', 'hr_staffing.model.users.User', 'assignee') />

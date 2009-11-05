@@ -103,7 +103,7 @@
 		
 		<cfset var userService = getProperty('beanFactory').getBean('userService') />
 		<cfset var staffers = userService.getUsersByRole('HR Staff') />
-		<cfset var staffer = createObject('component', 'hr_staffing.model.users.staffer') />
+		<cfset var staffer = createObject('component', 'hr_staffing.model.users.Staffer') />
 		<cfset staffer.init(request.dsn) />
 		<cfset staffers.setObject(staffer) />
 		<cfset event.setArg('staffers', staffers) />
