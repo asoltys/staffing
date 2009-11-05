@@ -2,7 +2,7 @@
 	<cffunction name="configure" access="private" returntype="void">
 		<cfset super.configure() />
 		
-		<cfset hasMany('positions', 'hr_staffing.model.positions.position', 'position') />
+		<cfset hasMany('positions', 'hr_staffing.model.positions.Position', 'position') />
 		<cfset hasMany('transactions', 'hr_staffing.model.transactions.Transaction', 'transaction') />
 	</cffunction>
 	
@@ -94,7 +94,7 @@
 		<cfargument name="conditions" type="string" required="no" />
 		
 		<cfset var query = "" />
-		<cfset var object = createObject('component', 'hr_staffing.model.positions.position')>
+		<cfset var object = createObject('component', 'hr_staffing.model.positions.Position')>
 		<cfset var gateway = createObject('component', 'hr_staffing.model.positions.PositionGateway')>
 		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 		<cfset object.init(variables.dsn) />

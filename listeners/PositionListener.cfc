@@ -19,7 +19,7 @@
 	<cffunction name="deletePosition" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
+		<cfset var position = createObject('component', 'hr_staffing.model.positions.Position') />
 		
 		<cfset position.init(request.dsn) />
 		<cfset position.read(event.getArg('id')) />
@@ -37,7 +37,7 @@
 	<cffunction name="prepareForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
+		<cfset var position = createObject('component', 'hr_staffing.model.positions.Position') />
 		
 		<cfset var jobService = getProperty('beanFactory').getBean('jobService') />
 		<cfset var languageConsiderationService = getProperty('beanFactory').getBean('languageConsiderationService') />
@@ -249,7 +249,7 @@
 	<cffunction name="addAssignees" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
+		<cfset var position = createObject('component', 'hr_staffing.model.positions.Position') />
 		<cfset position.init(request.dsn) />
 		<cfset position.read(event.getArg('id')) />
 		<cfset position.addAssignees(event.getArg('assignees')) />
@@ -265,7 +265,7 @@
 	<cffunction name="processForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
+		<cfset var position = createObject('component', 'hr_staffing.model.positions.Position') />
 		<cfset position.init(request.dsn) />
 
 		<cfif NOT event.isArgDefined('infrastructure')>
@@ -309,7 +309,7 @@
 		<cfset var userService = getProperty('beanFactory').getBean('userService') />
 		<cfset var staffingMethodService = getProperty('beanFactory').getBean('staffingMethodService') />
 		
-		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
+		<cfset var position = createObject('component', 'hr_staffing.model.positions.Position') />
 		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
 		<cfset var processes = processService.getList() />
 		<cfset var board_chairs = userService.getCurrentUsersList() />
@@ -348,7 +348,7 @@
 	<cffunction name="createProcess" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
+		<cfset var position = createObject('component', 'hr_staffing.model.positions.Position') />
 		<cfset var process = createObject('component', 'hr_staffing.model.processes.Process') />
 
     <cfif not event.isArgDefined('collective')>
@@ -380,7 +380,7 @@
 	<cffunction name="updateProcess" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
+		<cfset var position = createObject('component', 'hr_staffing.model.positions.Position') />
 		<cfset position.init(request.dsn) />
 		<cfset position.read(event.getArg('id')) />
 		<cfset position.process_id = event.getArg('process_id') />

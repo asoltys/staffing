@@ -1,6 +1,6 @@
 <cfoutput>
 
-<cfset position = createObject('component', 'hr_staffing.model.positions.position') />
+<cfset position = createObject('component', 'hr_staffing.model.positions.Position') />
 
 <cfset position.init(request.dsn) />
 

@@ -9,7 +9,7 @@
 		<cfset hasMany('comments', 'hr_staffing.model.comments.Comment', 'comment') />
 		<cfset hasMany('transactions', 'hr_staffing.model.transactions.Transaction', 'transaction') />
 		<cfset hasMany('process_activities', 'hr_staffing.model.process_activities.ProcessActivity', 'process_activity') />
-		<cfset hasMany('positions', 'hr_staffing.model.positions.position', 'position') />
+		<cfset hasMany('positions', 'hr_staffing.model.positions.Position', 'position') />
 		
 		<cfset this.collective = 0 />
 	</cffunction>
@@ -201,7 +201,7 @@
 
 	<cffunction name="getPositions" access="public"  returntype="supermodel.ObjectList">
 		<cfset var positionService = createObject('component', 'hr_staffing.services.PositionService') />
-		<cfset var position = createObject('component', 'hr_staffing.model.positions.position') />
+		<cfset var position = createObject('component', 'hr_staffing.model.positions.Position') />
 		<cfset var gateway = createObject('component', 'hr_staffing.model.positions.PositionGateway') />
 		<cfset var parameters = structNew() />
 		<cfset parameters.process_id = this.id />

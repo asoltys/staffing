@@ -4,7 +4,7 @@
 
 <cfinclude template="#request.includes_path#includes/helpers.cfm" />
 
-<cfset position = createObject('component', 'hr_staffing.model.positions.position') />
+<cfset position = createObject('component', 'hr_staffing.model.positions.Position') />
 <cfset position.init(request.dsn) />
 <cfset position.read(event.getArg('id')) />
 <cfset position.readAssignees() />

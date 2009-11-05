@@ -145,8 +145,8 @@
 	
 ---------------------------------------------------------------------------------------------------->
 	
-	<cffunction name="savePosition" access="remote" returntype="hr_staffing.model.positions.position">
-		<cfargument name="position" type="hr_staffing.model.positions.position" required="yes" />
+	<cffunction name="savePosition" access="remote" returntype="hr_staffing.model.positions.Position">
+		<cfargument name="position" type="hr_staffing.model.positions.Position" required="yes" />
 			
 		<cfset arguments.position.configure() />
 		<cfset arguments.position.init(variables.dsn) />

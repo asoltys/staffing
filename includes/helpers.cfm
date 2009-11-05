@@ -80,7 +80,7 @@
 ----------------------------------------------------------------------------------------------------->
 
 <cffunction name="position_row" access="public" returntype="void" output="true">
-	<cfargument name="position" type="hr_staffing.model.positions.position" required="yes" />
+	<cfargument name="position" type="hr_staffing.model.positions.Position" required="yes" />
 	<cfargument name="displayProcess" type="boolean" default="true" />
 	
 	<tr id="toggle_#position.id#" class="detailsToggle #position.process.getStatusClass(request.current_user)#">
@@ -105,7 +105,7 @@
 ----------------------------------------------------------------------------------------------------->
 
 <cffunction name="job_details" access="public" returntype="void" output="true">
-	<cfargument name="position" type="hr_staffing.model.positions.position" required="yes" />
+	<cfargument name="position" type="hr_staffing.model.positions.Position" required="yes" />
 	<cfargument name="displayStatus" type="boolean" default="true" />
 
 	<table class="job_details <cfif displayStatus>#position.process.getStatusClass(request.current_user)#</cfif>">
@@ -157,7 +157,7 @@
 ----------------------------------------------------------------------------------------------------->
 
 <cffunction name="position_details" access="public" returntype="void" output="true">
-	<cfargument name="position" type="hr_staffing.model.positions.position" required="yes" />
+	<cfargument name="position" type="hr_staffing.model.positions.Position" required="yes" />
 	<cfargument name="displayStatus" type="boolean" default="true" />
 
 	<table id="position_details_#position.id#" class="position details <cfif displayStatus>#position.process.getStatusClass(request.current_user)#</cfif>">

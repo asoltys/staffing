@@ -2,7 +2,7 @@
 	<cffunction name="configure" access="private" returntype="void">
 		<cfset super.configure() />
 
-		<cfset hasMany('positions', 'hr_staffing.model.positions.position', 'position') />
+		<cfset hasMany('positions', 'hr_staffing.model.positions.Position', 'position') />
 		<cfset hasMany('transactions', 'hr_staffing.model.transactions.Transaction', 'transaction') />
 	</cffunction>
 	

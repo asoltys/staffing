@@ -30,7 +30,7 @@
 	</cffunction>
 	
 	<cffunction name="getTransactions" access="remote" returntype="query" output="false">
-		<cfargument name="position" type="hr_staffing.model.positions.position" required="yes" />
+		<cfargument name="position" type="hr_staffing.model.positions.Position" required="yes" />
 		
 		<cfset arguments.position.configure() />
 		<cfset arguments.position.init(variables.dsn) />
