@@ -201,14 +201,14 @@
 
 	<bean id="regionService" class="hr_staffing.modules.common_login.services.RegionService">
 		<constructor-arg name="object">
-			<bean id="regionObject" class="hr_staffing.modules.common_login.model.region">
+			<bean id="regionObject" class="hr_staffing.modules.common_login.model.Region">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="gateway">
-			<bean id="regionGateway" class="hr_staffing.modules.common_login.model.regionGateway">
+			<bean id="regionGateway" class="hr_staffing.modules.common_login.model.RegionGateway">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>

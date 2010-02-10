@@ -38,12 +38,13 @@
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
 		<cfset var position = createObject('component', 'hr_staffing.model.positions.Position') />
-		
+
 		<cfset var jobService = getProperty('beanFactory').getBean('jobService') />
 		<cfset var languageConsiderationService = getProperty('beanFactory').getBean('languageConsiderationService') />
 		<cfset var locationService = getProperty('beanFactory').getBean('locationService') />
 		<cfset var processService = getProperty('beanFactory').getBean('processService') />
 		<cfset var positionService = getProperty('beanFactory').getBean('positionService') />
+    <cfset var regionService = getProperty('beanFactory').getBean('regionService') />
 		<cfset var securityLevelService = getProperty('beanFactory').getBean('securityLevelService') />
 		<cfset var tenureService = getProperty('beanFactory').getBean('tenureService') />
 		<cfset var userService = getProperty('beanFactory').getBean('userService') />
@@ -51,10 +52,11 @@
 		<cfset var language_considerations = languageConsiderationService.getList() />
 		<cfset var locations = locationService.getList() />
 		<cfset var managers = userService.getCurrentUsersList() />
-		<cfset var titles = jobService.getExistingJobTitles() />
 		<cfset var processes = processService.getList() />
+		<cfset var regions = regionService.getList() />			
 		<cfset var security_levels = securityLevelService.getList() />
 		<cfset var tenures = tenureService.getList() />
+		<cfset var titles = jobService.getExistingJobTitles() />
 			
 		<cfif event.isArgDefined('position')>
 			<cfset position = event.getArg('position') />
@@ -74,6 +76,7 @@
 		<cfset event.setArg('titles', titles) />
 		<cfset event.setArg('processes', processes) />
 		<cfset event.setArg('position', position) />
+		<cfset event.setArg('regions', regions) />
 		<cfset event.setArg('security_levels', security_levels) />
 		<cfset event.setArg('tenures', tenures) />
 	</cffunction>

@@ -4,26 +4,28 @@
 
     <cfset addProperty('id', 'int') />
     <cfset addProperty('job_id', 'int') />
+    <cfset addProperty('location_id', 'int') />
+    <cfset addProperty('manager_id', 'int') />
+    <cfset addProperty('process_id', 'int') />
     <cfset addProperty('security_level_id', 'int') />
     <cfset addProperty('tenure_id', 'int') />
-    <cfset addProperty('process_id', 'int') />
-    <cfset addProperty('manager_id', 'int') />
     <cfset addProperty('language_consideration_id', 'int') />
     <cfset addProperty('number', 'varchar') />
     <cfset addProperty('rationale', 'text') />
     <cfset addProperty('comments', 'text') />
     <cfset addProperty('fiscal_year', 'char') />
-    <cfset addProperty('location', 'varchar') />
     <cfset addProperty('infrastructure', 'bit') />
 
     <cfset this.fiscal_year = year(now()) />
 		
-		<cfset belongsTo('language_consideration', 'hr_staffing.model.language_considerations.LanguageConsideration') />
 		<cfset belongsTo('job', 'hr_staffing.model.jobs.Job') />
-		<cfset belongsTo('process', 'hr_staffing.model.processes.Process') />
+		<cfset belongsTo('language_consideration', 'hr_staffing.model.language_considerations.LanguageConsideration') />
+		<cfset belongsTo('location', 'hr_staffing.model.locations.Location') />
 		<cfset belongsTo('manager', 'hr_staffing.model.users.Manager') />
-		<cfset belongsTo('tenure', 'hr_staffing.model.tenures.Tenure') />
+		<cfset belongsTo('process', 'hr_staffing.model.processes.Process') />
+		<cfset belongsTo('region', 'hr_staffing.modules.common_login.model.Region') />
 		<cfset belongsTo('security_level', 'hr_staffing.model.security_levels.SecurityLevel') />
+		<cfset belongsTo('tenure', 'hr_staffing.model.tenures.Tenure') />
 		<cfset hasMany('assignees', 'hr_staffing.model.users.User', 'assignee') />
 	</cffunction>
 

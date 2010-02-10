@@ -2,6 +2,7 @@
 <cfset position = event.getArg('position') />
 <cfset titles = event.getArg('titles') />
 <cfset language_considerations = event.getArg('language_considerations') />
+<cfset regions = event.getArg('regions') />
 <cfset locations = event.getArg('locations') />
 <cfset managers = event.getArg('managers') />
 <cfset staffing_methods = event.getArg('staffing_methods') />
@@ -62,18 +63,33 @@
 	<input id="id" name="id" type="hidden" value="#position.id#" />
 	<input id="job_id" name="job_id" type="hidden" value="#position.job_id#" />
 	<input id="process_id" name="process_id" type="hidden" value="#position.process_id#" />
-	
-	<label for="location">Location</label>
-	<select name="location" id="location">
+
+  <label for="region">Region</label>
+	<select name="region" id="region">
 		<option value="">Select One</option>
-		<cfloop condition="#locations.next()#">
-			<cfset location = locations.current() />
-			<cfif position.location eq location.name>
+		<cfloop condition="#regions.next()#">
+			<cfset region = regions.current() />
+			<cfif 1 eq 1>
 				<cfset selected = 'selected = "selected"' />
 			<cfelse>
 				<cfset selected = '' />
 			</cfif>
-			<option value="#location.name#" #selected#>#location.name#</option>
+			<option value="#region.name#" #selected#>#region.name#</option>
+		</cfloop>
+	</select>
+	<br /><br />
+	
+	<label for="location_id">Location</label>
+	<select name="location_id" id="location_id">
+		<option value="">Select One</option>
+		<cfloop condition="#locations.next()#">
+			<cfset location = locations.current() />
+			<cfif position.location_id eq location.id>
+				<cfset selected = 'selected = "selected"' />
+			<cfelse>
+				<cfset selected = '' />
+			</cfif>
+			<option value="#location.id#" #selected#>#location.name#</option>
 		</cfloop>
 	</select>
 	<br /><br />

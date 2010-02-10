@@ -1,4 +1,4 @@
-<cfcomponent extends="supermodel.gateway">
+<cfcomponent extends="supermodel.Gateway">
 
 <!------------------------------------------------------------------------------------------ configure
 
