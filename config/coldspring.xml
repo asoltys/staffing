@@ -198,7 +198,23 @@
 			<ref bean="transactionLog" />
 		</constructor-arg>
 	</bean>
-	
+
+	<bean id="regionService" class="hr_staffing.modules.common_login.services.RegionService">
+		<constructor-arg name="object">
+			<bean id="regionObject" class="hr_staffing.modules.common_login.model.region">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="gateway">
+			<bean id="regionGateway" class="hr_staffing.modules.common_login.model.regionGateway">
+				<constructor-arg name="dsn">
+					<value>${dsn}</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
 		
 	<bean id="roleService" class="hr_staffing.modules.common_login.services.RoleService">
 		<constructor-arg name="object">

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mach-ii PUBLIC
+	"-//Mach-II//DTD Mach-II Configuration 1.1.1//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_1_1.dtd">
+
+<mach-ii version="1.5">
+
+<!-- EVENT-HANDLERS -->
+	<event-handlers>
+	
+		<event-handler event="locations.list" access="public">
+			<notify listener="locationListener" method="prepareList" />
+			<view-page name="locations.list" contentKey="request.content" />
+		</event-handler>
+		
+		<event-handler event="locations.form" access="public">
+			<filter name="Authenticate" />
+			<notify listener="locationListener" method="prepareForm" />
+			<view-page name="locations.form" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="locations.process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="locationListener" method="processForm" />
+		</event-handler>
+		
+		<event-handler event="locations.delete" access="public">
+			<filter name="Authenticate" />
+			<notify listener="locationListener" method="processDelete" />
+		</event-handler>		
+	</event-handlers>
+		
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<page-view name="locations.list" page="/views/locations/list.cfm"/>
+		<page-view name="locations.form" page="/views/locations/form.cfm"/>
+	</page-views>
+
+</mach-ii>

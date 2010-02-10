@@ -14,7 +14,7 @@
 		<property name="eventParameter" value="event"/>
 		<property name="parameterPrecedence" value="form"/>
 		<property name="maxEvents" value="10"/>
-		<property name="ColdspringComponentRelativePath" value="/HR_Staffing/config/coldspring.xml" />
+		<property name="ColdspringComponentRelativePath" value="/hr_staffing/config/coldspring.xml" />
 		<property name="dsn" value="human_resources"/>
     <property name="userPath" value="hr_staffing.model.users.User" />
 	</properties>
@@ -28,6 +28,7 @@
 	<includes>
 		<include file="config/activities.xml" override="true" />
 		<include file="config/jobs.xml" override="true" />
+		<include file="config/locations.xml" override="true" />
 		<include file="config/pools.xml" override="true" />
 		<include file="config/positions.xml" override="true" />
 		<include file="config/processes.xml" override="true" />
@@ -41,7 +42,7 @@
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
-		<listener name="commonUserListener" type="HR_Staffing.modules.common_login.listeners.CommonUserListener">
+		<listener name="commonUserListener" type="hr_staffing.modules.common_login.listeners.CommonUserListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
@@ -49,7 +50,11 @@
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
-		<listener name="loginListener" type="HR_Staffing.modules.common_login.listeners.LoginListener">
+		<listener name="LocationListener" type="hr_staffing.listeners.LocationListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+
+		<listener name="loginListener" type="hr_staffing.modules.common_login.listeners.LoginListener">
 			<invoker type="MachII.framework.invokers.EventInvoker" />
 		</listener>
 
@@ -76,7 +81,7 @@
 
 	<!-- EVENT-FILTERS -->
 	<event-filters>
-		<event-filter name="Authenticate" type="HR_Staffing.filters.Authenticate" />
+		<event-filter name="Authenticate" type="hr_staffing.filters.Authenticate" />
 	</event-filters>
 
 	<!-- EVENT-HANDLERS -->
