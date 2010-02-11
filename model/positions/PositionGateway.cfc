@@ -43,11 +43,8 @@
 				common_login..branches.acronym AS branch_acronym,
 				cl_managers.first_name+' '+cl_managers.last_name as manager_name,
 				statuses.name AS status_name,
-				phases.name AS phase_name,
-        common_login..regions.name AS region_name
+				phases.name AS phase_name
 			FROM positions
-      LEFT JOIN locations
-        ON locations.id = positions.location_id
 			LEFT JOIN processes 
 				ON processes.id = positions.process_id
 			LEFT JOIN statuses 
@@ -62,8 +59,10 @@
 				ON managers.login = cl_managers.login
 			JOIN common_login..branches 
 				ON jobs.branch = common_login..branches.acronym
+      JOIN common_login..locations
+        ON positions.location = common_login..locations.name
       JOIN common_login..regions
-        ON locations.region = common_login..regions.acronym
+        ON common_login..locations.region_id = common_login..regions.id
 			JOIN classification_levels
 				ON jobs.classification_level_id = classification_levels.id
 			JOIN classifications

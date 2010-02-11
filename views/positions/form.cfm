@@ -62,17 +62,17 @@
 	<input id="job_id" name="job_id" type="hidden" value="#position.job_id#" />
 	<input id="process_id" name="process_id" type="hidden" value="#position.process_id#" />
 
-	<label for="location_id">Location</label>
-	<select name="location_id" id="location_id">
+	<label for="location">Location</label>
+	<select name="location" id="location">
 		<option value="">Select One</option>
 		<cfloop condition="#locations.next()#">
 			<cfset location = locations.current() />
-			<cfif position.location_id eq location.id>
+			<cfif position.location eq location.name>
 				<cfset selected = 'selected = "selected"' />
 			<cfelse>
 				<cfset selected = '' />
 			</cfif>
-			<option value="#location.id#" #selected#>#location.name#</option>
+			<option value="#location.name#" #selected#>#location.name#</option>
 		</cfloop>
 	</select>
 	<br /><br />

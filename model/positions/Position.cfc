@@ -4,12 +4,12 @@
 
     <cfset addProperty('id', 'int') />
     <cfset addProperty('job_id', 'int') />
-    <cfset addProperty('location_id', 'int') />
     <cfset addProperty('manager_id', 'int') />
     <cfset addProperty('process_id', 'int') />
     <cfset addProperty('security_level_id', 'int') />
     <cfset addProperty('tenure_id', 'int') />
     <cfset addProperty('language_consideration_id', 'int') />
+    <cfset addProperty('location', 'varchar') />
     <cfset addProperty('number', 'varchar') />
     <cfset addProperty('rationale', 'text') />
     <cfset addProperty('comments', 'text') />
@@ -20,7 +20,6 @@
 		
 		<cfset belongsTo('job', 'hr_staffing.model.jobs.Job') />
 		<cfset belongsTo('language_consideration', 'hr_staffing.model.language_considerations.LanguageConsideration') />
-		<cfset belongsTo('location', 'hr_staffing.model.locations.Location') />
 		<cfset belongsTo('manager', 'hr_staffing.model.users.Manager') />
 		<cfset belongsTo('process', 'hr_staffing.model.processes.Process') />
 		<cfset belongsTo('security_level', 'hr_staffing.model.security_levels.SecurityLevel') />
