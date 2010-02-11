@@ -53,7 +53,7 @@
       </cfif>
     </cfif>
 
-    <cfif structKeyExists(arguments, 'region_id') and arguments.parameters.region_id neq ''>
+    <cfif structKeyExists(arguments.parameters, 'region_id') and arguments.parameters.region_id neq ''>
       <cfset conditions = conditions & " AND common_login..regions.id = '" & arguments.parameters.region_id & "'"/>
     </cfif>
 
