@@ -48,10 +48,12 @@
 		<cfset var conditions = "1=1" />
 
     <cfif not structKeyExists(arguments, 'region_id') or arguments.parameters.region_id eq ''>
-      <cfset arguments.parameters.region_id = session.staffing_region />
+      <cfif structKeyExists(session, 'staffing_region') and session.staffing_region neq ''>
+        <cfset arguments.parameters.region_id = session.staffing_region />
+      </cfif>
     </cfif>
 
-    <cfif arguments.parameters.region_id neq ''>
+    <cfif structKeyExists(arguments, 'region_id') and arguments.parameters.region_id neq ''>
       <cfset conditions = conditions & " AND common_login..regions.id = '" & arguments.parameters.region_id & "'"/>
     </cfif>
 
