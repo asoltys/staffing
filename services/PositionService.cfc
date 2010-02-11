@@ -51,7 +51,9 @@
       <cfset arguments.parameters.region_id = session.staffing_region />
     </cfif>
 
-    <cfset conditions = conditions & " AND common_login..regions.id = '" & arguments.parameters.region_id & "'"/>
+    <cfif arguments.parameters.region_id neq ''>
+      <cfset conditions = conditions & " AND common_login..regions.id = '" & arguments.parameters.region_id & "'"/>
+    </cfif>
 
     <cfif not structKeyExists(arguments.parameters, 'fiscal_year') OR arguments.parameters.fiscal_year EQ "">
       <cfset arguments.parameters.fiscal_year = Year(DateAdd('m',-3,Now())) />
