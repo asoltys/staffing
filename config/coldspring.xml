@@ -94,14 +94,14 @@
 	
 	<bean id="languageConsiderationService" class="hr_staffing.services.LanguageConsiderationService">
 		<constructor-arg name="object">
-			<bean id="locationObject" class="hr_staffing.model.language_considerations.LanguageConsideration">
+			<bean id="languageConsiderationObject" class="hr_staffing.model.language_considerations.LanguageConsideration">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="gateway">
-			<bean id="locationGateway" class="hr_staffing.model.language_considerations.LanguageConsiderationGateway">
+			<bean id="languageConsiderationGateway" class="hr_staffing.model.language_considerations.LanguageConsiderationGateway">
 				<constructor-arg name="dsn">
 					<value>${dsn}</value>
 				</constructor-arg>
@@ -111,14 +111,14 @@
 	
 	<bean id="locationService" class="hr_staffing.modules.common_login.services.LocationService">
 		<constructor-arg name="object">
-			<bean id="locationObject" class="hr_staffing.modules.common_login.model.Location">
+			<bean id="locationObject" class="common_login.modules.common_login.model.Location">
 				<constructor-arg name="dsn">
 					<value>common_login</value>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>
 		<constructor-arg name="gateway">
-			<bean id="locationGateway" class="hr_staffing.modules.common_login.model.LocationGateway">
+			<bean id="locationGateway" class="common_login.modules.common_login.model.LocationGateway">
 				<constructor-arg name="dsn">
 					<value>common_login</value>
 				</constructor-arg>

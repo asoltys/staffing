@@ -21,17 +21,17 @@
 		<input type="text" name="name" id="name" value="#location.name#" />
 		<br /><br />
 		
-		<label for="region">Region</label>
-		<select name="region" id="region">
+		<label for="region_id">Region</label>
+		<select name="region_id" id="region_id">
 			<option value="">Select One</option>
 			<cfloop condition="#regions.next()#">
 				<cfset region = regions.current() />
-				<cfif location.region eq region.acronym>
+				<cfif location.region.id eq region.id>
 					<cfset selected = 'selected = "selected"' />
 				<cfelse>
 					<cfset selected = '' />
 				</cfif>
-				<option value="#region.acronym#" #selected#>#region.name#</option>
+				<option value="#region.id#" #selected#>#region.name#</option>
 			</cfloop>
 		</select>
 		<br /><br />

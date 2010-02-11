@@ -30,7 +30,7 @@
 		<cfset location = locations.current() />
 		<tr class="#altClass#">
 			<td><a href="#request.path#index.cfm?event=locations.form&amp;id=#location.id#">#location.name#</a></td>
-			<td>#location.region#</td>
+			<td>#location.getRegion().name#</td>
 			<td class="delete icon"><a href="#request.path#index.cfm?event=locations.delete&amp;id=#location.id#" class="deleteLink" title="Delete location"/><span>Delete location</span></a></td>
 		</tr>
 		<cfset row_num = row_num + 1 />

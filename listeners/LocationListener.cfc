@@ -21,7 +21,7 @@
 
 	<cffunction name="prepareForm" access="public" output="false" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />		
-		<cfset var location = createObject('component', 'hr_staffing.model.locations.location') />
+		<cfset var location = createObject('component', 'common_login.modules.common_login.model.Location') />
 		
 		<cfset var regionService = getProperty('beanFactory').getBean('regionService') />
 
@@ -64,8 +64,8 @@
 	<cffunction name="processForm" access="public" returntype="void">
 		<cfargument name="event" type="MachII.framework.Event" required="true" />
 		
-		<cfset var location = createObject('component', 'hr_staffing.model.locations.location') />
-		<cfset location.init(request.dsn) />
+		<cfset var location = createObject('component', 'common_login.modules.common_login.model.Location') />
+		<cfset location.init(request.cms_dsn) />
 		
     <cfset location.load(arguments.event.getArgs()) />		
 		<cfset arguments.event.setArg('location', location) />
@@ -81,5 +81,22 @@
 			<cfset event.setArg('errors', location.getErrors()) />
 			<cfset announceEvent('locations.form', arguments.event.getArgs()) />
 		</cfif>
+	</cffunction>
+
+<!------------------------------------------------------------------------ processDelete
+
+	Description:	Delete the object
+	
+--------------------------------------------------------------------------------------->
+
+	<cffunction name="processDelete" access="public" returntype="void">
+		<cfargument name="event" type="MachII.framework.Event" required="true" />
+		
+		<cfset var location = createObject('component', 'common_login.modules.common_login.model.Location') />
+		<cfset location.init(request.cms_dsn) />
+    <cfset location.load(arguments.event.getArgs()) />
+    <cfset location.delete() />
+
+    <cflocation url="#request.path#index.cfm?event=locations.list" addtoken="no" />
 	</cffunction>
 </cfcomponent>
