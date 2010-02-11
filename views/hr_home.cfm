@@ -38,6 +38,10 @@
 
 <p>Welcome back #request.current_user.first_name#! <a href="#request.path#index.cfm?event=positions.staffing_log&amp;user_id=#request.current_user.id#">Click here</a> to be taken directly to the staffing log where you can view positions that you are currently assigned to.</p>
 
+<h2>Region Selection</h2>
+
+<cfinclude template="region_selector.cfm" />
+
 <h2>Position Summary</h2>
 
 <cfif statuses.recordcount GT 0>

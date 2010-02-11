@@ -1,4 +1,12 @@
+<cfset regions = event.getArg('regions') />
+
 <cfoutput>
+
+<cfsavecontent variable="headcontent">
+		<script type="text/javascript" src="#request.path#scripts/home.js"></script>
+</cfsavecontent>
+
+<cfhtmlhead text="#headcontent#">
 
 <cfset position = createObject('component', 'hr_staffing.model.positions.Position') />
 
@@ -10,6 +18,7 @@
 		<a href="#request.path#index.cfm?event=home&amp;view=Manager" <cfif event.getArg('view') EQ 'Manager'>class="active"</cfif>>Manager View</a>
 	</p>
 </cfif>
+
 
 <cfif (event.isArgDefined('view') and event.getArg('view') eq "Manager") or request.current_user.hasRole("Manager")>
 	<cfinclude template="manager_home.cfm" />

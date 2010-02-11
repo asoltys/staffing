@@ -91,6 +91,7 @@
 		</event-handler>
 
 		<event-handler event="home" access="public">
+			<notify listener="positionListener" method="prepareDashboard" />
 			<view-page name="home" contentKey="request.content" />
 		</event-handler>
 
