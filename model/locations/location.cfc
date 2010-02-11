@@ -5,5 +5,4 @@
 
     <cfset addProperty('name', 'varchar') />
 	</cffunction>	
-
 </cfcomponent>

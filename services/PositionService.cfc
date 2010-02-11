@@ -47,6 +47,12 @@
 		<cfset var position_list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var conditions = "1=1" />
 
+    <cfif not structKeyExists(arguments, 'region_id') or arguments.parameters.region_id eq ''>
+      <cfset arguments.parameters.region_id = request.current_user.region_id />
+    </cfif>
+
+    <cfset conditions = conditions & " AND common_login..regions.id = '" & arguments.parameters.region_id & "'"/>
+
     <cfif not structKeyExists(arguments.parameters, 'fiscal_year') OR arguments.parameters.fiscal_year EQ "">
       <cfset arguments.parameters.fiscal_year = Year(DateAdd('m',-3,Now())) />
     </cfif>

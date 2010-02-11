@@ -23,7 +23,6 @@
 		<cfset belongsTo('location', 'hr_staffing.model.locations.Location') />
 		<cfset belongsTo('manager', 'hr_staffing.model.users.Manager') />
 		<cfset belongsTo('process', 'hr_staffing.model.processes.Process') />
-		<cfset belongsTo('region', 'hr_staffing.modules.common_login.model.Region') />
 		<cfset belongsTo('security_level', 'hr_staffing.model.security_levels.SecurityLevel') />
 		<cfset belongsTo('tenure', 'hr_staffing.model.tenures.Tenure') />
 		<cfset hasMany('assignees', 'hr_staffing.model.users.User', 'assignee') />

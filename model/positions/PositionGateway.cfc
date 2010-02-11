@@ -43,7 +43,8 @@
 				common_login..branches.acronym AS branch_acronym,
 				cl_managers.first_name+' '+cl_managers.last_name as manager_name,
 				statuses.name AS status_name,
-				phases.name AS phase_name
+				phases.name AS phase_name,
+        common_login..regions.name AS region_name
 			FROM positions
       LEFT JOIN locations
         ON locations.id = positions.location_id

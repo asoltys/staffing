@@ -44,7 +44,6 @@
 		<cfset var locationService = getProperty('beanFactory').getBean('locationService') />
 		<cfset var processService = getProperty('beanFactory').getBean('processService') />
 		<cfset var positionService = getProperty('beanFactory').getBean('positionService') />
-    <cfset var regionService = getProperty('beanFactory').getBean('regionService') />
 		<cfset var securityLevelService = getProperty('beanFactory').getBean('securityLevelService') />
 		<cfset var tenureService = getProperty('beanFactory').getBean('tenureService') />
 		<cfset var userService = getProperty('beanFactory').getBean('userService') />
@@ -53,7 +52,6 @@
 		<cfset var locations = locationService.getList() />
 		<cfset var managers = userService.getCurrentUsersList() />
 		<cfset var processes = processService.getList() />
-		<cfset var regions = regionService.getList() />			
 		<cfset var security_levels = securityLevelService.getList() />
 		<cfset var tenures = tenureService.getList() />
 		<cfset var titles = jobService.getExistingJobTitles() />
@@ -76,7 +74,6 @@
 		<cfset event.setArg('titles', titles) />
 		<cfset event.setArg('processes', processes) />
 		<cfset event.setArg('position', position) />
-		<cfset event.setArg('regions', regions) />
 		<cfset event.setArg('security_levels', security_levels) />
 		<cfset event.setArg('tenures', tenures) />
 	</cffunction>
