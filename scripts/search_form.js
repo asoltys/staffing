@@ -56,7 +56,42 @@ function getClassificationLevels() {
 		$('classification_level_id').options[0].text = 'All';
 		selected_node.selected = true;
 	}
+
+function getLocations() {		
+		var select_length = $('location').options.length;	
+		for (var i = select_length; i > 0; i--)
+		{
+			$('location').remove(i);
+		}
 		
+		$('location').options[0].text = 'Loading...';
+		
+		new Ajax.Request('index.cfm?event=positions.get_locations', {
+			method: 'get',
+			onSuccess: loadLocations,
+			parameters: {
+				region: $('region').getValue()
+			}
+		});
+	}
+		
+function loadLocations(transport, json) {		
+  var selected_node = $('location').options[0];
+  for (var i = 0; i < json.data.name.length; i++)
+  {
+    var option_node = Builder.node('option', {value: json.data.id[i]}, json.data.name[i]);
+    $('location').appendChild(option_node)
+    
+    if (json.data.id[i] == $('current_location').getValue())
+    {
+      selected_node = option_node;
+    }
+  }
+  
+  $('location').options[0].text = 'All';
+  selected_node.selected = true;
+}
+  
 function clickHandler(e) {
 		$('search_header').removeClassName('hover');
 		$('search_form').addClassName('open');

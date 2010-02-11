@@ -9,6 +9,7 @@
 	<fieldset id="search_fields" style="display: none;">	
 		<input id="user_id" name="user_id" type="hidden" value="#event.getArg('user_id')#" />
 		<input id="current_classification_level_id" name="current_classification_level_id" type="hidden" value="#event.getArg('classification_level_id')#" />
+		<input id="current_location" name="current_location" type="hidden" value="#event.getArg('location')#" />
 		
 		<h2>Filter Criteria</h2>
 		
@@ -48,6 +49,21 @@
 			</cfloop>
 		</select>
 		<br /><br />
+    
+    <label for="region_id">Region</label>
+		<select id="region_id" name="region_id">
+			<option value="">All</option>
+			<cfloop condition="#regions.next()#">
+				<cfset region = regions.current() />
+				<cfif region.id eq event.getArg('region_id')>
+					<cfset selected = 'selected="selected"' />
+				<cfelse>
+					<cfset selected = '' />
+				</cfif>
+				<option value="#region.id#" #selected#>#region.name#</option>
+			</cfloop>
+		</select>
+		<br /><br />
 		
 		<label for="location">Location</label>
 		<select id="location" name="location">
@@ -69,7 +85,7 @@
 			<option value="">All</option>
 			<cfloop condition="#phases.next()#">
 				<cfset phase = phases.current() />
-				<cfif location.name eq event.getArg('phase_id')>
+				<cfif phase.id eq event.getArg('phase_id')>
 					<cfset selected = 'selected="selected"' />
 				<cfelse>
 					<cfset selected = '' />

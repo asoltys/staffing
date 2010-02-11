@@ -147,6 +147,7 @@
 		<cfset var locationService = getProperty('beanFactory').getBean('locationService') />
 		<cfset var phaseService = getProperty('beanFactory').getBean('phaseService') />
 		<cfset var positionService = getProperty('beanFactory').getBean('positionService') />
+		<cfset var regionService = getProperty('beanFactory').getBean('regionService') />
 		<cfset var securityLevelService = getProperty('beanFactory').getBean('securityLevelService') />
 		<cfset var staffingMethodService = getProperty('beanFactory').getBean('staffingMethodService') />
 		<cfset var statusService = getProperty('beanFactory').getBean('statusService') />
@@ -154,8 +155,9 @@
 
 		<cfset var branches = branchService.getList() />
 		<cfset var classifications = classificationService.getList() />
-		<cfset var locations = locationService.getList() />
 		<cfset var phases = phaseService.getList() />
+		<cfset var locations = locationService.getList() />
+		<cfset var regions = regionService.getList() />
 		<cfset var security_levels = securityLevelService.getList() />
 		<cfset var staffing_methods = staffingMethodService.getList() />
 		<cfset var statuses = statusService.getList() />
@@ -223,6 +225,7 @@
 		<cfset locations.order('name') />
 		<cfset positions.order(position_order, event.getArg('direction')) />
 		<cfset phases.order('name') />
+		<cfset regions.order('name') />
 		<cfset staffing_methods.order('name') />
 		<cfset security_levels.order('name') />
 		<cfset statuses.order('name') />
@@ -243,6 +246,7 @@
 		<cfset event.setArg('locations', locations) />
 		<cfset event.setArg('positions', positions) />
 		<cfset event.setArg('phases', phases) />
+		<cfset event.setArg('regions', regions) />
 		<cfset event.setArg('staffing_methods', staffing_methods) />
 		<cfset event.setArg('security_levels', security_levels) />
 		<cfset event.setArg('statuses', statuses) />

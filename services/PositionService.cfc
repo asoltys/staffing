@@ -47,7 +47,7 @@
 		<cfset var position_list = createObject('component', 'supermodel.ObjectList') />
 		<cfset var conditions = "1=1" />
 
-    <cfif not structKeyExists(arguments, 'region_id') or arguments.parameters.region_id eq ''>
+    <cfif not structKeyExists(arguments.parameters, 'region_id') or arguments.parameters.region_id eq ''>
       <cfif structKeyExists(session, 'staffing_region') and session.staffing_region neq ''>
         <cfset arguments.parameters.region_id = session.staffing_region />
       </cfif>

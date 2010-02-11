@@ -3,6 +3,7 @@
 <cfset direction = event.getArg('direction') />
 <cfset groups = event.getArg('groups') />
 <cfset locations = event.getArg('locations') />
+<cfset regions = event.getArg('regions') />
 <cfset orderings = event.getArg('orderings') />
 <cfset phases = event.getArg('phases') />
 <cfset positions = event.getArg('positions') />
