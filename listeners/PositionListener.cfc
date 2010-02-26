@@ -48,6 +48,7 @@
 
     <cfif event.isArgDefined('region_id')>
       <cfset session.staffing_region = event.getArg('region_id') />
+      <cflocation url="#request.path#index.cfm?event=positions.staffing_log&refresh=1" addtoken="no" />
     </cfif>
 	</cffunction>
 
