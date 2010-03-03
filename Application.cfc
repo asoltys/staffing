@@ -24,7 +24,7 @@
 	<!--- Set the app key for sub-applications within a single cf-application. --->
 	<cfset MACHII_APP_KEY =  GetFileFromPath(ExpandPath(".")) />
 	<!--- Set the configuration mode (when to reinit): -1=never, 0=dynamic, 1=always --->
-	<cfset MACHII_CONFIG_MODE = 1 />
+	<cfset MACHII_CONFIG_MODE = -1 />
 	<!--- Whether or not to validate the configuration XML before parsing. Default to false. --->
 	<cfset MACHII_VALIDATE_XML = FALSE />
 	<!--- Set the path to the Mach-II's DTD file. --->
