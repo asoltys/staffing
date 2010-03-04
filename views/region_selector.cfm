@@ -16,6 +16,8 @@
         <option value="#region.id#" #selected#>#region.name#</option>
       </cfloop>
     </select>
+
+    <input id="submit" name="submit" type="submit" value="Go" />
   </form>
 </p>
 

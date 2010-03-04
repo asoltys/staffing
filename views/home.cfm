@@ -2,12 +2,6 @@
 
 <cfoutput>
 
-<cfsavecontent variable="headcontent">
-		<script type="text/javascript" src="#request.path#scripts/home.js"></script>
-</cfsavecontent>
-
-<cfhtmlhead text="#headcontent#">
-
 <cfset position = createObject('component', 'hr_staffing.model.positions.Position') />
 
 <cfset position.init(request.dsn) />
