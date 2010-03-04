@@ -42,7 +42,7 @@
 		<cfset var regions = regionService.getList() />			
 		<cfset event.setArg('regions', regions) />
 
-    <cfif not structKeyExists(session, 'staffing_region')>
+    <cfif not structKeyExists(session, 'staffing_region') or session.staffing_region eq ''>
       <cfset session.staffing_region = request.current_user.getRegion().id />
     </cfif>
 
