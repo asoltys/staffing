@@ -3,7 +3,7 @@
 <h2>Region Selection</h2>
 
 <p>
-  <form id="region_form" method="post">
+  <form id="region_form" action="#request.path#applications/staffing/index.cfm" method="post">
     Display staffing data from
     <select id="region_id" name="region_id">
       <cfloop condition="#regions.next()#">
