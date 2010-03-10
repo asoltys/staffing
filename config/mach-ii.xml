@@ -133,5 +133,6 @@
 
 		<plugin name="CommonLogin" type="cms.plugins.CommonLogin" />
 		<plugin name="Layout" type="cms.plugins.Layout" />
+		<plugin name="SessionManager" type="hr_staffing.plugins.SessionManager" />
 	</plugins>
 </mach-ii>
