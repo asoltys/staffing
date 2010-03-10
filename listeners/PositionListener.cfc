@@ -168,6 +168,10 @@
 		<cfset var orderings = structNew() />
 		<cfset var position_order = event.getArg('order_by') />
 
+    <cfset var region = createObject('component', 'common_login.modules.common_login.model.Region') />
+    <cfset region.init(request.cms_dsn) />
+    <cfset region.read(session.staffing_region) />
+
     <cfif event.isArgDefined('refresh')>
       <cfset structDelete(session, 'params')>
     </cfif>
@@ -247,6 +251,7 @@
 		<cfset event.setArg('locations', locations) />
 		<cfset event.setArg('positions', positions) />
 		<cfset event.setArg('phases', phases) />
+		<cfset event.setArg('region', region) />
 		<cfset event.setArg('regions', regions) />
 		<cfset event.setArg('staffing_methods', staffing_methods) />
 		<cfset event.setArg('security_levels', security_levels) />

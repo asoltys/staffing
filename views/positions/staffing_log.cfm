@@ -12,6 +12,8 @@
 <cfset statuses = event.getArg('statuses') />
 <cfset tenures = event.getArg('tenures') />
 
+<cfset current_region = event.getArg('region') />
+
 <cfinclude template="#request.includes_path#includes/helpers.cfm" />
 
 <cfoutput>

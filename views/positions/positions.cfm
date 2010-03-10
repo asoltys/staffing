@@ -3,7 +3,7 @@
 <cfinclude template="search_form.cfm" />
 
 <p class="group">
-Displaying <strong>#positions.length()#</strong> Positions 
+Displaying <strong>#positions.length()#</strong> Positions in #current_region.name# Region
 <cfif structKeyExists(session, 'params')>
   (<a href="#request.path#index.cfm?event=positions.staffing_log&amp;refresh=1">Show All / Refresh</a>)
 </cfif>
