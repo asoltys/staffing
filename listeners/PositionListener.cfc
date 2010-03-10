@@ -172,7 +172,7 @@
     <cfset region.init(request.cms_dsn) />
     <cfset region.read(session.staffing_region) />
 
-    <cfif event.isArgDefined('refresh')>
+    <cfif event.isArgDefined('refresh') or event.isArgDefined('region')>
       <cfset structDelete(session, 'params')>
     </cfif>
 
