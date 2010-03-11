@@ -5,7 +5,7 @@
 <h1>Position Created</h1>
 
 <cfif request.server EQ 'Production'>
-	<cfset to = "#request.current_user.email#,#position.manager.email#" />
+	<cfset to = "#request.current_user.email#" />
 	<cfset bcc = request.human_resources_mailbox />
 <cfelse>
 	<cfset to = request.admin />
