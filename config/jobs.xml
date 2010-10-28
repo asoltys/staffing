@@ -29,6 +29,27 @@
 			<filter name="Authenticate" />
 			<notify listener="jobListener" method="processDelete" />
 		</event-handler>		
+
+		<event-handler event="cls.form" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="prepareFormCL" />
+			<view-page name="cls.form" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="cls.list" access="public">
+			<notify listener="jobListener" method="prepareListCL" />
+			<view-page name="cls.list" contentKey="request.content" />
+		</event-handler>
+
+		<event-handler event="cls.process" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="processFormCL" />
+		</event-handler>
+		
+		<event-handler event="cls.delete" access="public">
+			<filter name="Authenticate" />
+			<notify listener="jobListener" method="processDeleteCL" />
+		</event-handler>		
 		
 		<event-handler event="jobs.get_classifications" access="public">
 			<filter name="Authenticate" />
@@ -65,6 +86,8 @@
 	<page-views>
 		<page-view name="jobs.list" page="/views/jobs/list.cfm"/>
 		<page-view name="jobs.form" page="/views/jobs/form.cfm"/>
+		<page-view name="cls.list" page="/views/cls/list.cfm"/>
+		<page-view name="cls.form" page="/views/cls/form.cfm"/>
 	</page-views>
 
 </mach-ii>

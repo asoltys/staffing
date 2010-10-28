@@ -122,6 +122,144 @@
 			<cfset announceEvent('jobs.list', arguments.event.getArgs()) />
 		</cfif>
 	</cffunction>
+
+<!-------------------------------------------------------------------------------------- prepareForm
+
+	Description:	Puts an object in the event
+	
+---------------------------------------------------------------------------------------------------->
+
+	<cffunction name="prepareFormCL" access="public" output="false" returntype="void">
+		<cfargument name="event" type="MachII.framework.Event" required="true" />		
+		<cfset var job = createObject('component', 'hr_staffing.model.jobs.Job') />
+		
+		<cfset var classificationService = getProperty('beanFactory').getBean('classificationService') />
+		<cfset var classificationLevelService = getProperty('beanFactory').getBean('classificationLevelService') />
+		<cfset var branchService = getProperty('beanFactory').getBean('branchService') />
+
+		<cfset var branches = branchService.getList() />		
+		<cfset var classifications = classificationService.getList() />
+		<cfset var classification_levels = classificationLevelService.getList() />	
+		
+		<cfif event.isArgDefined('job')>
+			<cfset job = event.getArg('job') />
+		<cfelse>
+			<cfset job.init(request.dsn) />
+			<cfif event.isArgDefined('id') AND event.getArg('id') NEQ "">
+				<cfset job.read(event.getArg('id')) />
+			</cfif>
+		</cfif>
+		
+		<cfset event.setArg('job', job) />
+		
+		<cfset branches.order('name') />
+
+		<cfset event.setArg('branches',branches) />				
+		<cfset event.setArg('classification_levels',classification_levels) />
+		<cfset event.setArg('classifications', classifications) />
+	</cffunction>
+
+<!--------------------------------------------------------------------------------------- prepareList
+
+	Description:
+	
+---------------------------------------------------------------------------------------------------->
+
+	<cffunction name="prepareListCL" access="public" output="false" returntype="void">
+		<cfargument name="event" type="MachII.framework.Event" required="true" />
+		
+		<cfset var branchService = getProperty('beanFactory').getBean('branchService') />
+		<cfset var jobService = getProperty('beanFactory').getBean('jobService') />
+		<cfset var classificationLevelService = getProperty('beanFactory').getBean('classificationLevelService') />
+
+		
+		<cfset var branches = branchService.getList() />		
+		<cfset var classification_levels = classificationLevelService.getList() />	
+		<cfset var jobs = jobService.getList() />		
+
+		<cfset event.setArg('branches', branches) />
+		<cfset event.setArg('classification_levels', classification_levels) />
+		<cfset event.setArg('jobs', jobs) />		
+	</cffunction>
+	
+<!--------------------------------------------------------------------------------------- processForm
+
+	Description:	Validate the form then either create or update the object.
+	
+---------------------------------------------------------------------------------------------------->
+
+	<cffunction name="processFormCL" access="public" returntype="void">
+		<cfargument name="event" type="MachII.framework.Event" required="true" />
+    <cfset var classification_id = '' />
+
+    <cfif trim(event.getArg('classification')) eq '' or trim(event.getArg('level')) eq ''>
+      <cflocation url="index.cfm?event=cls.list" addtoken="no" />
+    </cfif>
+		
+	  <cfquery name="findClassification" datasource="#request.dsn#">
+      SELECT id FROM classifications WHERE name =
+        <cfqueryparam value="#trim(event.getArg('classification'))#" cfsqltype="cf_sql_varchar">
+    </cfquery>
+
+
+    <cfif findClassification.recordcount eq 0>
+      <cfquery name="createClassification" datasource="#request.dsn#">
+        SET NOCOUNT ON;
+        INSERT INTO classifications (name)
+        VALUES (
+          <cfqueryparam value="#trim(event.getArg('classification'))#" cfsqltype="cf_sql_varchar">
+        )
+        SET NOCOUNT ON;
+
+        SELECT SCOPE_IDENTITY() AS id;
+      </cfquery>
+
+      <cfset classification_id = createClassification.id />
+    <cfelse>
+      <cfset classification_id = findClassification.id />
+    </cfif>
+
+    <cfquery name="findLevel" datasource="#request.dsn#">
+      SELECT id FROM classification_levels
+      WHERE name = <cfqueryparam value="#trim(event.getArg('level'))#" cfsqltype="cf_sql_varchar">
+      AND classification_id = <cfqueryparam value="#classification_id#" cfsqltype="cf_sql_integer">
+    </cfquery>
+
+    <cfif findLevel.recordcount eq 0>
+      <cfquery datasource="#request.dsn#">
+        INSERT INTO classification_levels (name, classification_id)
+        VALUES (
+          <cfqueryparam value="#trim(event.getArg('level'))#" cfsqltype="cf_sql_varchar">,
+          <cfqueryparam value="#classification_id#" cfsqltype="cf_sql_integer">
+        )
+      </cfquery>
+    </cfif>
+
+    <cflocation url="index.cfm?event=cls.list" addtoken="no" />
+	</cffunction>
+	
+<!------------------------------------------------------------------------------------- processDelete
+
+	Description:	Delete the object
+	
+---------------------------------------------------------------------------------------------------->
+
+	<cffunction name="processDeleteCL" access="public" returntype="void">
+		<cfargument name="event" type="MachII.framework.Event" required="true" />
+		
+		<cfset var job = createObject('component', 'hr_staffing.model.jobs.Job') />
+		<cfset job.init(request.dsn) />
+		
+    	<cfset job.load(arguments.event.getArgs()) />
+		
+		<cfif job.canBeDeleted()>
+			<cfset job.delete() />
+			<cflocation url="#request.path#index.cfm?event=jobs.list" addtoken="no" />
+		<cfelse>
+			<cfset event.setArg('errors', job.getErrors()) />
+			<cfset announceEvent('jobs.list', arguments.event.getArgs()) />
+		</cfif>
+	</cffunction>
 	
 <!-------------------------------------------------------------------------------- getClassifications
 
