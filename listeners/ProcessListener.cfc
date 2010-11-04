@@ -74,6 +74,7 @@
 
 		<!--- If the position object is valid  --->
 		<cfif process.valid()>
+        <cfset structDelete(session, 'params') />
 				<cflocation url="#request.path#index.cfm?event=processes.list" addtoken="no" />
 		<cfelse>
 			<cfset event.setArg('errors', process.getErrors()) />
