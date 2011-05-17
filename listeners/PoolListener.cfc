@@ -21,11 +21,9 @@
 
 		<cfset var pool = createObject('component', 'hr_staffing.model.pools.Pool') />
 
-		<cfset var classificationLevelService = getProperty('beanFactory').getBean('classificationLevelService') />
 		<cfset var processService = getProperty('beanFactory').getBean('processService') />
 		<cfset var userService = getProperty('beanFactory').getBean('userService') />
 
-		<cfset var classification_levels = classificationLevelService.getList() />
 		<cfset var processes = processService.getList() />
 		<cfset var contacts = userService.getCurrentUsersList() />
 
@@ -43,7 +41,6 @@
 
 		<cfset event.setArg('pool', pool) />
 
-		<cfset event.setArg('classification_levels', classification_levels) />
 		<cfset event.setArg('processes', processes) />
 		<cfset event.setArg('contacts', contacts) />
 	</cffunction>

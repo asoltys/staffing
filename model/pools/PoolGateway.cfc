@@ -25,7 +25,6 @@
         pools.creation_date,
 				pools.expiry_date,
 				pools.description,
-        positions.classification_level_id,
         positions.region_id,
         positions.location,
         positions.title,
@@ -62,6 +61,8 @@
 				ON classifications.id = classification_levels.classification_id
 			LEFT JOIN common_login..users common_contacts
 				ON common_contacts.login = contacts.login
+      WHERE positions.region_id = 
+        <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 		</cfquery>
 		
 		<cfreturn query />

@@ -49,23 +49,6 @@
 
 	<br /><br />
 
-	<label for="classification_level_id">Classification / Level:</label>
-	<select id="classification_level_id" name="classification_level_id">
-		<option value="">Select One</option>
-		<cfloop condition="#classification_levels.next()#">
-			<cfset classification_level = classification_levels.current() />
-
-			<cfset selected = "" />
-			<cfif classification_level.id EQ pool.classification_level_id>
-				<cfset selected = "selected=""selected""" />
-			</cfif>
-
-			<option value="#classification_level.id#" #selected#>#classification_level.classification.name# #classification_level.name#</option>
-		</cfloop>
-	</select>
-
-	<br /><br />
-
 	<label for="expiry_date">Expiry Date <small>(yyyy-mm-dd)</small>:</label>
 	<input id="expiry_date" name="expiry_date" type="text" value="#LSDateFormat(pool.expiry_date, "yyyy-mm-dd")#" class="date" />
 	<img src="#request.path#images/calendar.gif" class="calendar" />

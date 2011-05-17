@@ -20,7 +20,7 @@
             #pool.process.number#
           </a>
           <br />
-          #pool.classification_level.classification.name#-#pool.classification_level.name# 
+          #pool.classification_name#-#pool.classification_level_name# 
         </td>
 				<td>
           <strong>#pool.title#</strong><br />
