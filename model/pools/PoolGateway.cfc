@@ -43,13 +43,11 @@
           jobs.title,
           jobs.classification_level_id,
           language_considerations.name as language,
-          common_login..regions.id as region_id
+          positions_regions.region_id
         FROM positions
         LEFT JOIN jobs ON jobs.id = positions.job_id
         LEFT JOIN language_considerations ON language_considerations.id = positions.language_consideration_id
-        LEFT JOIN locations ON positions.location_id = locations.id
-        LEFT JOIN common_login..locations ON common_login..locations.name = positions.location
-        LEFT JOIN common_login..regions ON common_login..regions.id = common_login..locations.region_id
+        LEFT JOIN positions_regions ON positions_regions.position_id = positions.id
       ) positions ON pools.process_id = positions.process_id
 			LEFT JOIN processes
 				ON processes.id = pools.process_id
