@@ -10,6 +10,12 @@
 
 <h1>Pools</h1>
 
+<cfif request.current_user.hasRole('HR Staff')>
+	<p>
+		<a class="addLink" href="#request.path#index.cfm?event=pools.form">Add Pool</a>
+	</p>
+</cfif>
+
 <cfif active_pools.length() GT 0>
 	<h2>Active Pools</h2>
 	<cfset pools = active_pools />
