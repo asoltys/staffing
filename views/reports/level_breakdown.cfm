@@ -22,6 +22,8 @@
 	ON positions.process_id = processes.id
 	JOIN statuses
 	ON processes.status_id = statuses.id
+  LEFT JOIN positions_regions
+  ON positions_regions.position_id = positions.id
 	WHERE positions.fiscal_year = 
 		<cfqueryparam value="#selected_year#" cfsqltype="cf_sql_varchar" />
 	OR YEAR(processes.completion_date) = 
@@ -51,6 +53,10 @@
 		max(fiscal_year) AS max, 
 		min(fiscal_year) AS min 
 	FROM positions
+  LEFT JOIN positions_regions
+  ON positions_regions.position_id = positions.id
+  WHERE positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
 <cfset start_year = date_range.min />

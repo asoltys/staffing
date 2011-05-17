@@ -29,6 +29,10 @@
 	  ON processes.id = positions.process_id
 	LEFT JOIN statuses
 		ON statuses.id = processes.status_id
+  LEFT JOIN positions_regions
+    ON positions_regions.position_id = positions.id
+  WHERE positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
 <cfoutput>

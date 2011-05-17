@@ -5,6 +5,10 @@
 		min(fiscal_year) AS min,
     max(fiscal_year) AS max
 	FROM positions
+  LEFT JOIN positions_regions
+    ON positions_regions.position_id = positions.id
+  WHERE positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
 <cfset start_year = date_range.min />

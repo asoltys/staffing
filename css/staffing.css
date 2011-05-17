@@ -21,15 +21,12 @@ span.navigation {
 }
 
 dl#reports dt {
-	float: left;
-	font-weight: bold;
-	width: 12em;
-	margin-bottom: 1em;
+  font-weight: bold;
 }
 
 dl#reports dd {
-	margin-left: 13em;
-	margin-bottom: 1em;
+  margin-bottom: 2em;
+  margin-left: 16em;
 }
 
 p.group {

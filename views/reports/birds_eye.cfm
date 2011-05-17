@@ -20,6 +20,8 @@
 	ON positions.job_id = jobs.id
 	LEFT JOIN statuses
 	ON processes.status_id = statuses.id
+  LEFT JOIN positions_regions
+  ON positions_regions.position_id = positions.id
 	WHERE 
 	(
 		positions.fiscal_year = <cfqueryparam value="#selected_year#" cfsqltype="cf_sql_varchar" />
@@ -31,6 +33,9 @@
 			AND <cfqueryparam value="#selected_year#" cfsqltype="cf_sql_varchar" /> = <cfqueryparam value="#Year(DateAdd('m', -3, Now()))#" cfsqltype="cf_sql_varchar" />
 		)
 	)
+
+  AND positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 	ORDER BY status
 </cfquery>
 
@@ -39,13 +44,17 @@
 	FROM positions 
 	LEFT JOIN processes 
 	ON positions.process_id = processes.id
-	WHERE positions.fiscal_year = 
+  LEFT JOIN positions_regions
+  ON positions_regions.position_id = positions.id
+	WHERE (positions.fiscal_year = 
 		<cfqueryparam value="#previous_year#" cfsqltype="cf_sql_varchar" />
 	OR YEAR(completion_date) = 
 		<cfqueryparam value="#previous_year#" cfsqltype="cf_sql_varchar" />
 	<cfif previous_year EQ Year(DateAdd('m', -3, Now()))>
 	OR processes.completion_date IS NULL
-	</cfif>
+	</cfif>)
+  AND positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
 <cfquery name="carried_over" dbtype="query">
@@ -80,6 +89,10 @@
 		max(fiscal_year) AS max, 
 		min(fiscal_year) AS min 
 	FROM positions
+  LEFT JOIN positions_regions
+  ON positions_regions.position_id = positions.id
+  WHERE positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
 <cfset start_year = date_range.min />
@@ -120,7 +133,7 @@
 </p>
 
 <p>
-	The branch with the most positions currently planned is <strong>#top_branch.branch_name[1]#</strong> with <strong>#top_branch.count[1]#</strong> positions, followed by <strong>#top_branch.branch_name[2]#</strong> with <strong>#top_branch.count[2]#</strong>.
+	The branch with the most positions currently planned is <strong>#top_branch.branch_name[1]#</strong> with <strong>#top_branch.count[1]#</strong> positions.
 </p>
 
 <p>

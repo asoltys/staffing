@@ -15,6 +15,8 @@
 		ON positions.process_id = processes.id
 	LEFT JOIN statuses
 		ON processes.status_id = statuses.id
+  LEFT JOIN positions_regions
+    ON positions_regions.position_id = positions.id
 	JOIN jobs
 		ON positions.job_id = jobs.id
 	WHERE 
@@ -28,6 +30,8 @@
 			AND <cfqueryparam value="#selected_year#" cfsqltype="cf_sql_varchar" /> = <cfqueryparam value="#Year(DateAdd('m', -3, Now()))#" cfsqltype="cf_sql_varchar" />
 		)
 	)
+  AND positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 	GROUP BY statuses.name, jobs.branch
 </cfquery>
 
@@ -50,6 +54,10 @@
 		max(fiscal_year) AS max, 
 		min(fiscal_year) AS min 
 	FROM positions
+  LEFT JOIN positions_regions
+  ON positions_regions.position_id = positions.id
+  WHERE positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
 <cfset start_year = date_range.min />
