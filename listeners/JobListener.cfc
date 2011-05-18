@@ -65,7 +65,7 @@
 		
 		<cfset var branches = branchService.getList() />		
 		<cfset var classification_levels = classificationLevelService.getList() />	
-		<cfset var jobs = jobService.getList() />		
+		<cfset var jobs = jobService.getList(event.getArgs()) />		
 
 		<cfset event.setArg('branches', branches) />
 		<cfset event.setArg('classification_levels', classification_levels) />

@@ -26,10 +26,9 @@
 		<cfset var list = createObject('component', 'supermodel.ObjectList') />
 
 		<cfif structKeyExists(arguments, 'parameters')>
-			<cfset query = variables.gateway.select(arguments.parameters.classification_level_id,
-				arguments.parameters.branch,
-				arguments.parameters.location,
-				arguments.parameters.role) />
+			<cfset query = variables.gateway.select(
+        classification_level_id = arguments.parameters.classification_level_id,
+				branch = arguments.parameters.branch) />
 		<cfelse>
 			<cfset query = variables.gateway.select() />
 		</cfif>		
