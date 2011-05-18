@@ -140,7 +140,7 @@
 </p>
 
 <p>
-	The branch with the most positions currently planned is <strong>#top_branch.branch_name[1]#</strong> with <strong>#top_branch.count[1]#</strong> positions.
+	The branch with the most positions currently planned is <strong>#top_branch.branch_name[1]#</strong> with <strong>#top_branch.count[1]#</strong>.
 </p>
 
 <p>
