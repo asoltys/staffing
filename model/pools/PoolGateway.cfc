@@ -59,8 +59,10 @@
 				ON classifications.id = classification_levels.classification_id
 			LEFT JOIN common_login..users common_contacts
 				ON common_contacts.login = contacts.login
+      <cfif structKeyExists(session, 'params') and structKeyExists(session.params, 'region_id')>
       WHERE positions.region_id = 
         <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
+      </cfif>
 		</cfquery>
 		
 		<cfreturn query />

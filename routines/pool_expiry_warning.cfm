@@ -21,7 +21,8 @@
   <cfset pool = pools.current() />
 
   <cfmail 
-    to="#request.human_resources_mailbox#" 
+    to="#pool.contact.email#"
+    cc="#request.human_resources_mailbox#; chad.santo@pwgsc-tpsgc.gc.ca; adam.soltys@pwgsc-tpsgc.gc.ca"
     from="'Pacific Web Services' <pacificweb.services@pwgsc-tpsgc.gc.ca>"
     subject="Pool Expiration Notice" 
     type="html">
@@ -32,7 +33,7 @@
 
   <p>
     Process: <a href="#request.server_url##request.path#index.cfm?event=processes.ssda&amp;process_id=#pool.process.id#">#pool.process.number#</a><br />
-    Group / Level: #pool.classification_level.classification.name#-#pool.classification_level.name#<br />
+    Group / Level: #pool.classification_name#-#pool.classification_level_name#<br />
     Contact: #pool.contact.getName()#<br />
     Expiry Date: #DateFormat(pool.expiry_date, "yyyy-mm-dd")#<br />
     Description: #pool.description#
