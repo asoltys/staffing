@@ -17,12 +17,16 @@
 		ON staffing_methods.id = positions.staffing_method_id
 	JOIN tenures
 		ON tenures.id = positions.tenure_id
+  LEFT JOIN positions_regions
+    ON positions_regions.position_id = positions.id
 	WHERE (
 		SELECT count(*)
 		FROM processes_staffing_activities
 		WHERE processes_staffing_activities.status_id != 3
 		AND processes_staffing_activities.process_id = positions.id
 	) != 0
+  AND positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
 <cfquery name="staffed_positions" datasource="#request.dsn#">
@@ -34,12 +38,16 @@
 		ON staffing_methods.id = positions.staffing_method_id
 	JOIN tenures
 		ON tenures.id = positions.tenure_id
+  LEFT JOIN positions_regions
+    ON positions_regions.position_id = positions.id
 	WHERE (
 		SELECT count(*)
 		FROM processes_staffing_activities
 		WHERE processes_staffing_activities.status_id != 3
 		AND processes_staffing_activities.process_id = positions.id
 	) = 0
+  AND positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
 <cfoutput>

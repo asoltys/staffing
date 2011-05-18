@@ -24,13 +24,15 @@
 	ON processes.status_id = statuses.id
   LEFT JOIN positions_regions
   ON positions_regions.position_id = positions.id
-	WHERE positions.fiscal_year = 
+	WHERE (positions.fiscal_year = 
 		<cfqueryparam value="#selected_year#" cfsqltype="cf_sql_varchar" />
 	OR YEAR(processes.completion_date) = 
 		<cfqueryparam value="#selected_year#" cfsqltype="cf_sql_varchar" />
 	<cfif selected_year EQ Year(DateAdd('m', -3, Now()))>
 	OR processes.completion_date IS NULL
-	</cfif>
+	</cfif>)
+  AND positions_regions.region_id = 
+    <cfqueryparam value="#session.params.region_id#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
 <cfquery name="classifications" dbtype="query">
