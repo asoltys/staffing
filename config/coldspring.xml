@@ -109,7 +109,7 @@
 		</constructor-arg>
 	</bean>
 	
-	<bean id="locationService" class="hr_staffing.modules.common_login.services.LocationService">
+	<bean id="locationService" class="hr_staffing.services.LocationService">
 		<constructor-arg name="object">
 			<bean id="locationObject" class="common_login.modules.common_login.model.Location">
 				<constructor-arg name="dsn">
