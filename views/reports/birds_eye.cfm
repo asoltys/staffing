@@ -66,9 +66,9 @@
 <cfset difference = positions.recordcount - previous_positions.count />
 
 <cfif previous_positions.count NEQ 0>
-	<cfset percent_increase = DecimalFormat((difference / previous_positions.count) * 100) & "%" />
+	<cfset percent_increase = DecimalFormat(Abs((difference / previous_positions.count) * 100)) & "%" />
 <cfelse>
-	<cfset percent_increase = 'INIFINITY!!!' />
+	<cfset percent_increase = 'infinite proportions' />
 </cfif>
 
 <cfquery name="statuses" dbtype="query">
@@ -124,9 +124,16 @@
 </select>
 </p>
 
+<cfif difference gt 0>
 <p>
-	There were a total of <strong>#positions.recordcount#</strong> positions planned for this year which is <strong>#difference#</strong> more than the previous year -- an increase of <strong>#percent_increase#</strong>.
+	There were a total of <strong>#positions.recordcount#</strong> positions planned for this year which is <strong>#difference#</strong> more than the previous year, an increase of <strong>#percent_increase#</strong>.
 </p>
+<cfelse>
+<cfset difference = Abs(difference) />
+<p>
+	There were a total of <strong>#positions.recordcount#</strong> positions planned for this year which is <strong>#difference#</strong> less than the previous year, a decrease of <strong>#percent_increase#</strong>.
+</p>
+</cfif>
 
 <p>
 	Out of the <strong>#positions.recordcount#</strong> positions planned for this year, <strong>#carried_over.recordcount#</strong> of them were carried over from past years.
