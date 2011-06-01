@@ -15,7 +15,6 @@
 	
 	<cfsetting enablecfoutputonly="yes" />
 
-
 	<!---
 	PROPERTIES - MACH-II SPECIFIC
 	--->
@@ -30,9 +29,6 @@
 	<!--- Set the path to the Mach-II's DTD file. --->
 	<cfset MACHII_DTD_PATH = ExpandPath("/MachII/mach-ii_1_1_1.dtd") />
 
-	<!---
-	PUBLIC FUNCTIONS
-	--->
 	<cffunction name="onApplicationStart" returnType="void" output="false"
 		hint="Only runs when the App is started.">
 			
@@ -43,28 +39,6 @@
 		<cfinclude template="server_settings.cfm" />
     
 		<cfset LoadFramework() />
-	</cffunction>
-
-	<cffunction name="onApplicationEnd" returntype="void" output="false"
-		hint="Only runs when the App is shut down.">
-		<cfargument name="ApplicationScope" required="true"/>
-	</cffunction>
-
-	<cffunction name="onSessionStart" returntype="void" output="false"
-		hint="Only runs when a session is created.">
-		<!---
-		Example onSessionStart in a Session Facade
-		<cfset getProperty("sessionFacade").onSessionStart() />
-		--->
-	</cffunction>
-
-	<cffunction name="onSessionEnd" returntype="void" output="false"
-		hint="Only run when a session ends.">
-		<cfargument name="SessionScope" required="true"/>
-		<!---
-		Example onSessionEnd
-		<cfset getProperty("sessionFacade").onSessionEnd(arguments.SessionScope) />
-		--->
 	</cffunction>
 
 	<cffunction name="onRequestStart" returnType="void" output="true"
@@ -79,7 +53,10 @@
 		<!--- Request Scope Variable Defaults --->
 		<cfset request.self = "index.cfm">
 
-		<!--- Set per session cookies if not using J2EE session management --->
+    <cfif not structKeyExists(session, 'staffing_region') or session.staffing_region eq ''>
+      <cfset session.staffing_region = request.current_user.getRegion().id />
+    </cfif>
+
 		<cfif StructKeyExists(session, "cfid") AND (NOT StructKeyExists(cookie, "cfid") OR NOT StructKeyExists(cookie, "cftoken"))>
 			<cfcookie name="cfid" value="#session.cfid#" />
 			<cfcookie name="cftoken" value="#session.cftoken#" />

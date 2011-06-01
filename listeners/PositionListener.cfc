@@ -42,10 +42,6 @@
 		<cfset var regions = regionService.getList() />			
 		<cfset event.setArg('regions', regions) />
 
-    <cfif not structKeyExists(session, 'staffing_region') or session.staffing_region eq ''>
-      <cfset session.staffing_region = request.current_user.getRegion().id />
-    </cfif>
-
     <cfif event.isArgDefined('region_id')>
       <cfset session.staffing_region = event.getArg('region_id') />
       <cflocation url="#request.path#index.cfm?event=positions.staffing_log&refresh=1" addtoken="no" />
