@@ -54,7 +54,11 @@
 		<cfset request.self = "index.cfm">
 
     <cfif not structKeyExists(session, 'staffing_region') or session.staffing_region eq ''>
-      <cfset session.staffing_region = request.current_user.getRegion().id />
+      <cfif structKeyExists(request, 'current_user')>
+        <cfset session.staffing_region = request.current_user.getRegion().id />
+      <cfelse>
+        <cfset session.staffing_region = '' />
+      </cfif>
     </cfif>
 
 		<cfif StructKeyExists(session, "cfid") AND (NOT StructKeyExists(cookie, "cfid") OR NOT StructKeyExists(cookie, "cftoken"))>
