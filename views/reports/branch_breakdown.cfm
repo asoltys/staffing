@@ -91,15 +91,16 @@
 
 <cfchart format="flash" chartwidth="700" xaxistitle="Branches" yaxistitle="Positions" showlegend="yes">
 	<cfloop query="statuses">
+    <cfset status = statuses.status />
 		<cfquery name="counts" dbtype="query">
 			SELECT 
 				branch, 
 				num_positions
 			FROM positions
-			WHERE status = '#statuses.status#'
+			WHERE status = '#status#'
 		</cfquery>
 
-		<cfchartseries type="bar" query="counts" itemcolumn="branch" valuecolumn="num_positions" serieslabel="#statuses.status#" seriescolor="#statusColours[statuses.status]#" />	
+		<cfchartseries type="bar" query="counts" itemcolumn="branch" valuecolumn="num_positions" serieslabel="#status#" seriescolor="#statusColours[status]#" />	
 	</cfloop>
 </cfchart>
 
