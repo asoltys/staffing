@@ -22,4 +22,20 @@
     <cfset this.creation_date = now() />
     <cfset super.insertQuery() />
   </cffunction>
+
+  <cffunction name="getMailingList" access="public">
+    <cfset var contacts = "" />
+
+    <cfquery name="contacts" datasource="#request.dsn#">
+      SELECT cl.email
+      FROM common_login..users cl
+      JOIN staffing_users ON staffing_users.login = cl.login
+      JOIN positions_users ON positions_users.user_id = staffing_users.id
+      JOIN positions ON positions.id = positions_users.position_id
+      WHERE positions.process_id = 
+        <cfqueryparam value="#this.process_id#" cfsqltype="cf_sql_integer" />
+    </cfquery>
+
+    <cfreturn "#this.contact.email#;#valueList(contacts.email, ';')#" />
+  </cffunction>
 </cfcomponent>

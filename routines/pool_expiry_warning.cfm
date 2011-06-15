@@ -22,7 +22,7 @@
 
   <cfmail 
     to="#pool.contact.email#"
-    cc="#request.human_resources_mailbox#; chad.santo@pwgsc-tpsgc.gc.ca; adam.soltys@pwgsc-tpsgc.gc.ca"
+    cc="#pool.getMailingList()#;#request.human_resources_mailbox#;chad.santo@pwgsc-tpsgc.gc.ca;adam.soltys@pwgsc-tpsgc.gc.ca"
     from="'Pacific Web Services' <pacificweb.services@pwgsc-tpsgc.gc.ca>"
     subject="Pool Expiration Notice" 
     type="html">
