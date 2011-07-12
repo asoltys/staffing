@@ -8,7 +8,7 @@
     <select id="region_id" name="region_id">
       <cfloop condition="#regions.next()#">
         <cfset region = regions.current() />
-        <cfif region.id eq session.staffing_region>
+        <cfif structKeyExists(session, 'staffing_region') and region.id eq session.staffing_region>
           <cfset selected = 'selected = "selected"' />
         <cfelse>
           <cfset selected = '' />
