@@ -8,7 +8,6 @@
 	<cfset at_risk_positions = staffer.getRecentlyEndangeredPositions() />
 	<cfset late_positions = staffer.getRecentlyLatePositions() />
 	
-	
 	<cfif at_risk_positions.length() GT 0 OR late_positions.length() GT 0>
 		<cfif request.server EQ 'Dev'>
 			<cfset to = request.admin />
@@ -94,12 +93,6 @@
 				</table>
 			</cfif>
 						
-			<p>Have a great day!</p>
-			
-			<p>Your Pal,</p>
-			
-			<p>The Staffing Application</p>
-			
 			<p><small>This email is just for informational purposes and no action is necessarily required on your part.</small></p>
 		</cfmail>
 	</cfif>
