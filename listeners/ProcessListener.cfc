@@ -71,11 +71,12 @@
 		</cfif>
 
 		<cfset arguments.event.setArg('process', process) />
+    <cfstoredproc procedure="updateProcesses" datasource="#request.dsn#" />
 
 		<!--- If the position object is valid  --->
 		<cfif process.valid()>
         <cfset structDelete(session, 'params') />
-				<cflocation url="#request.path#index.cfm?event=processes.list" addtoken="no" />
+				<cflocation url="#request.path#index.cfm?event=positions.staffing_log" addtoken="no" />
 		<cfelse>
 			<cfset event.setArg('errors', process.getErrors()) />
 			<cfset announceEvent('processes.form', arguments.event.getArgs()) />
