@@ -6,14 +6,8 @@ $(->
   })
 
   $('#create').submit(->
-    $.post('create.cfm', $(this).serialize(), assignments)
+    $.post('create.cfm', $(this).serialize())
+    $('#actings').append("<tr><td>#{$('#process_id').
     return false
   )
-  
-  assignments = ->
-    $.getJSON('list.cfm', (json) ->
-      $.each(json.data.number, (i, v) ->
-        $('#actings').after(v)
-      )
-    )
 )

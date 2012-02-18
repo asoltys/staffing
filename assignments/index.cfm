@@ -54,10 +54,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
+    <cfloop query="assignments">
+      <tr>
+        <td>#assignments.number#</td>
+        <td>#assignments.expiry_date#</td>
+      </tr>
+    </cfloop>
   </tbody>
 </table>
 
