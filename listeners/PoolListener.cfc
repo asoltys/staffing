@@ -27,6 +27,7 @@
 		<cfset var processes = processService.getList() />
 		<cfset var contacts = userService.getCurrentUsersList() />
 
+    <cfset processes.order('number') />
     <cfset contacts.order('first_name') />
 
 		<cfif event.isArgDefined('pool')>
