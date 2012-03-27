@@ -1,20 +1,23 @@
 
   $(function() {
-    var assignments;
     $(".datepicker").datepicker({
       showOn: "button",
-      dateFormat: 'mm/dd/yy',
+      dateFormat: 'yy-mm-dd',
       buttonText: 'Calendar'
     });
     $('#create').submit(function() {
-      $.post('create.cfm', $(this).serialize(), assignments);
-      return false;
+      if ($('#expiry_date').val().length !== 10) {
+        return alert('Must enter a valid date');
+      } else {
+        return $.post('create.cfm', $(this).serialize());
+      }
     });
-    return assignments = function() {
-      return $.getJSON('list.cfm', function(json) {
-        return $.each(json.data.number, function(i, v) {
-          return $('#actings').after(v);
+    $('a.delete').click(function() {
+      if (confirm('You sure?')) {
+        return $.post('delete.cfm', {
+          id: $(this).closest('tr').id
         });
-      });
-    };
+      }
+    });
+    return $('#process_template');
   });
