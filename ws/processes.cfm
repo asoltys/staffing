@@ -1,7 +1,14 @@
 <cfquery name="query" datasource="#request.dsn#">
-SELECT * FROM processes
+SELECT id, number FROM processes
 </cfquery>
 
-<cfinvoke component="hr_staffing.helpers.json" method="encode" data="#query#" returnvariable="json" />
-
-<cfoutput>#json#</cfoutput>
+<cfoutput>
+[
+  <cfloop query="query">
+  {
+    "id": "#query.id#",
+    "number": "#query.number#",
+    }<cfif query.currentrow neq query.recordcount>,</cfif>
+  </cfloop>
+]
+</cfoutput>
