@@ -2,26 +2,11 @@
   $(function() {
     var Assignment, AssignmentForm, AssignmentList, AssignmentsView, Process, ProcessList, view;
     Assignment = Backbone.Model.extend({
-      defaults: function() {
-        return {
-          process: new Process,
-          expiry_date: "test",
-          comments: "",
-          number: 6
-        };
-      },
       validate: function() {
         return this.get('expiry_date').length === 10;
       }
     });
-    Process = Backbone.Model.extend({
-      defaults: function() {
-        return {
-          id: 0,
-          number: 12345
-        };
-      }
-    });
+    Process = Backbone.Model.extend();
     AssignmentList = Backbone.Collection.extend({
       model: Assignment,
       url: '/pacific_renewal/applications/staffing/ws/assignments.cfm'
@@ -30,7 +15,6 @@
       model: Process
     });
     AssignmentsView = Backbone.View.extend({
-      tagName: 'table',
       template: Handlebars.templates['assignments'],
       initialize: function() {
         this.assignments = new AssignmentList;

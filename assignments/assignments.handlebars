@@ -9,10 +9,39 @@
   <tbody>
     {{#each assignments}}
     <tr>
-      <td>{{number}}</td>
+      <td>
+        <a href="../index.cfm?event=processes.ssda&amp;process_id={{process_id}}">
+          {{number}}
+        </a>
+      </td>
       <td>{{title}}</td>
       <td>{{expiry_date}}</td>
     </tr>
+    <tr>
+      <td>{{comments}}</td>
     {{/each}}
   </tbody>
 </table>
+
+<form id="create">
+  <div>
+    <label for="process_id">Process</label>
+    <select id="process_id" name="process_id">
+      {{#each processes}}
+        <option value="{{id}}">{{number}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div>
+  <label for="expiry_date">Expiry Date</label>
+  <input id="expiry_date" name="expiry_date" class="datepicker" type="text" />
+  </div>
+
+  <div>
+  <label for="comments">Comments</label>
+  <textarea id="comments" name="comments"></textarea>
+  </div>
+
+  <input type="submit" value="Submit" />
+</form>

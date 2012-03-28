@@ -1,19 +1,10 @@
 $(->
   Assignment = Backbone.Model.extend(
-    defaults: -> 
-      process: new Process
-      expiry_date: "test"
-      comments: ""
-      number: 6
-
     validate: ->
       this.get('expiry_date').length == 10
   )
 
   Process = Backbone.Model.extend(
-    defaults: ->
-      id: 0
-      number: 12345
   )
 
   AssignmentList = Backbone.Collection.extend(
@@ -26,8 +17,6 @@ $(->
   )
 
   AssignmentsView = Backbone.View.extend(
-    tagName: 'table'
-
     template: Handlebars.templates['assignments']
 
     initialize: ->
