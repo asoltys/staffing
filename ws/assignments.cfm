@@ -1,5 +1,6 @@
 <cfquery name="query" datasource="#request.dsn#">
   SELECT 
+    assignments.id,
     assignments.process_id,
     assignments.expiry_date,
     assignments.comments,
@@ -19,8 +20,9 @@
 [
   <cfloop query="query">
   {
+    "id": "#query.id#",
     "process_id": "#query.process_id#",
-    "expiry_date": "#query.expiry_date#",
+    "expiry_date": "#dateFormat(query.expiry_date, 'yyyy-mm-dd')#",
     "comments": "#query.comments#",
     "number": "#query.number#",
     "title": "#query.title#"

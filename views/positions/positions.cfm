@@ -1,4 +1,8 @@
 <cfoutput>
+<cfsavecontent variable="head">
+<script src="#request.path#scripts/staffing_log.js" language="javascript" type="text/javascript"></script>
+</cfsavecontent>
+<cfhtmlhead text="#head#">
 
 <cfinclude template="search_form.cfm" />
 
