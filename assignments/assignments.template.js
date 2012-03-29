@@ -27,7 +27,7 @@ function program1(depth0,data) {
   stack1 = foundHelper || depth0.expiry_date;
   if(typeof stack1 === functionType) { stack1 = stack1.call(depth0, { hash: {} }); }
   else if(stack1=== undef) { stack1 = helperMissing.call(depth0, "expiry_date", { hash: {} }); }
-  buffer += escapeExpression(stack1) + "</td>\n    </tr>\n    <tr>\n      <td>";
+  buffer += escapeExpression(stack1) + "</td>\n      <td><a class=\"delete\">Delete</a></td>\n    </tr>\n    <tr>\n      <td>";
   foundHelper = helpers.comments;
   stack1 = foundHelper || depth0.comments;
   if(typeof stack1 === functionType) { stack1 = stack1.call(depth0, { hash: {} }); }
@@ -51,7 +51,7 @@ function program3(depth0,data) {
   buffer += escapeExpression(stack1) + "</option>\n      ";
   return buffer;}
 
-  buffer += "<table id=\"assignments\">\n  <thead>\n    <tr>\n      <th>Process</th>\n      <th>Job</th>\n      <th>Expiry Date</th>\n    </tr>\n  </thead>\n  <tbody>\n    ";
+  buffer += "<table id=\"assignments\">\n  <thead>\n    <tr>\n      <th>Process</th>\n      <th>Job</th>\n      <th>Expiry Date</th>\n      <th>Delete</th>\n    </tr>\n  </thead>\n  <tbody>\n    ";
   foundHelper = helpers.assignments;
   stack1 = foundHelper || depth0.assignments;
   stack2 = helpers.each;
