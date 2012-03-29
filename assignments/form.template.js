@@ -1,6 +1,6 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-templates['assignments.template'] = template(function (Handlebars,depth0,helpers,partials,data) {
+templates['form.template'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, stack2, foundHelper, tmp1, self=this, functionType="function", helperMissing=helpers.helperMissing, undef=void 0, escapeExpression=this.escapeExpression;
 
@@ -20,7 +20,7 @@ function program1(depth0,data) {
   buffer += escapeExpression(stack1) + "</option>\n      ";
   return buffer;}
 
-  buffer += "<table id=\"assignments\">\n  <thead>\n    <tr>\n      <th>Process</th>\n      <th>Job</th>\n      <th>Expiry Date</th>\n      <th>Delete</th>\n    </tr>\n  </thead>\n  <tbody>\n  </tbody>\n</table>\n\n<form id=\"create\">\n  <div>\n    <label for=\"process_id\">Process</label>\n    <select id=\"process_id\" name=\"process_id\">\n      ";
+  buffer += "<form id=\"create\">\n  <div>\n    <label for=\"process_id\">Process</label>\n    <select id=\"process_id\" name=\"process_id\">\n      ";
   foundHelper = helpers.processes;
   stack1 = foundHelper || depth0.processes;
   stack2 = helpers.each;

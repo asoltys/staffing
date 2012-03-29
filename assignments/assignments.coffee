@@ -1,5 +1,6 @@
 $(->
   Assignment = Backbone.Model.extend(
+    url: '/pacific_renewal/applications/staffing/ws/createass.cfm'
     validate: ->
       this.get('expiry_date').length == 10
   )
@@ -17,35 +18,56 @@ $(->
     url: '/pacific_renewal/applications/staffing/ws/processes.cfm'
   )
 
-  AssignmentsView = Backbone.View.extend(
-    tagName: 'div'
-    template: Handlebars.templates['assignments.template']
-    events:
-      "click a.delete" : "delete"
-      "submit form" : "submit"
+  AssignmentView = Backbone.View.extend(
+    tagName: 'tbody'
+    template: Handlebars.templates['assignment']
+    events: 'click a.delete' : 'delete'
+
+    delete: ->
+      if confirm('You sure?')
+        this.model.destroy()
+        this.model.clear()
+        this.$el.remove()
+
+    render: ->
+      this.$el.html(this.template(
+        this.model.toJSON()
+      ))
+      return this
+  )
+
+  AssignmentsTable = Backbone.View.extend(
+    tagName: 'table'
 
     initialize: ->
-      this.$el = $('#assignments-container')
-
       this.assignments = new AssignmentList
       this.assignments.bind('reset', this.render, this)
       this.assignments.fetch()
 
+    render: ->
+      this.assignments.each((a) -> 
+        view = new AssignmentView(model: a)
+        $('#assignments thead').after(view.render().el)
+      ) 
+      return this
+  )
+
+  AssignmentsForm = Backbone.View.extend(
+    tagName: 'form'
+    template: Handlebars.templates['form']
+    events: 'submit': 'submit'
+
+    initialize: ->
       this.processes = new ProcessList
       this.processes.bind('reset', this.render, this)
       this.processes.fetch()
 
     submit: ->
-      assignment.save()
+      alert('balls')
       return false
 
-    delete: ->
-      if confirm('You sure?')
-        this.model.destroy()
-
     render: ->
-      $('#assignments-container').html(this.template(
-        assignments: this.assignments.toJSON()
+      this.$el.html(this.template(
         processes: this.processes.toJSON()
       ))
 
@@ -58,5 +80,7 @@ $(->
       return this
   )
 
-  view = new AssignmentsView
+  table = new AssignmentsTable(el: $('#assignments'))
+  form = new AssignmentsForm()
+  $('#assignments').after(form.render().el)
 )

@@ -1,8 +1,9 @@
 (function() {
 
   $(function() {
-    var Assignment, AssignmentList, AssignmentsView, Process, ProcessList, view;
+    var Assignment, AssignmentList, AssignmentView, AssignmentsForm, AssignmentsTable, Process, ProcessList, form, table;
     Assignment = Backbone.Model.extend({
+      url: '/pacific_renewal/applications/staffing/ws/createass.cfm',
       validate: function() {
         return this.get('expiry_date').length === 10;
       }
@@ -16,32 +17,59 @@
       model: Process,
       url: '/pacific_renewal/applications/staffing/ws/processes.cfm'
     });
-    AssignmentsView = Backbone.View.extend({
-      tagName: 'div',
-      template: Handlebars.templates['assignments.template'],
+    AssignmentView = Backbone.View.extend({
+      tagName: 'tbody',
+      template: Handlebars.templates['assignment'],
       events: {
-        "click a.delete": "delete",
-        "submit form": "submit"
+        'click a.delete': 'delete'
       },
+      "delete": function() {
+        if (confirm('You sure?')) {
+          this.model.destroy();
+          this.model.clear();
+          return this.$el.remove();
+        }
+      },
+      render: function() {
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+      }
+    });
+    AssignmentsTable = Backbone.View.extend({
+      tagName: 'table',
       initialize: function() {
-        this.$el = $('#assignments-container');
         this.assignments = new AssignmentList;
         this.assignments.bind('reset', this.render, this);
-        this.assignments.fetch();
+        return this.assignments.fetch();
+      },
+      render: function() {
+        this.assignments.each(function(a) {
+          var view;
+          view = new AssignmentView({
+            model: a
+          });
+          return $('#assignments thead').after(view.render().el);
+        });
+        return this;
+      }
+    });
+    AssignmentsForm = Backbone.View.extend({
+      tagName: 'form',
+      template: Handlebars.templates['form'],
+      events: {
+        'submit': 'submit'
+      },
+      initialize: function() {
         this.processes = new ProcessList;
         this.processes.bind('reset', this.render, this);
         return this.processes.fetch();
       },
       submit: function() {
-        assignment.save();
+        alert('balls');
         return false;
       },
-      "delete": function() {
-        if (confirm('You sure?')) return this.model.destroy();
-      },
       render: function() {
-        $('#assignments-container').html(this.template({
-          assignments: this.assignments.toJSON(),
+        this.$el.html(this.template({
           processes: this.processes.toJSON()
         }));
         $('.datepicker').datepicker({
@@ -52,7 +80,11 @@
         return this;
       }
     });
-    return view = new AssignmentsView;
+    table = new AssignmentsTable({
+      el: $('#assignments')
+    });
+    form = new AssignmentsForm();
+    return $('#assignments').after(form.render().el);
   });
 
 }).call(this);
