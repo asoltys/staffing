@@ -6,7 +6,6 @@
   <script src="backbone.js"></script>
   <script src="handlebars.js"></script>
   <script src="assignments.template.js"></script>
-  <script src="process.template.js"></script>
   <script src="assignments.js"></script>
 </cfsavecontent>
 <cfhtmlhead text="#head#" />

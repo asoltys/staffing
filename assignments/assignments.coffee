@@ -17,7 +17,7 @@ $(->
   )
 
   AssignmentsView = Backbone.View.extend(
-    template: Handlebars.templates['assignments']
+    template: Handlebars.templates['assignments.template']
 
     initialize: ->
       this.assignments = new AssignmentList
